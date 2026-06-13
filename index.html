@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prasanta Kumar Dasgupta — Software Engineering Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sidebar-bg: #f4f1ec;
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-mute: #8a8a8a;
+    --rule: #d9d3c8;
+    --accent: #b88450;
+    --accent-deep: #8a5a2b;
+    --accent-soft: #f7ede0;
+    --highlight: #fff8ec;
+    --quote-bg: #fbf6ee;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    background: #ece8df;
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif; }
+  .page {
+    max-width: 1100px;
+    margin: 30px auto;
+    background: var(--paper);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: 1400px;
+  }
+
+  /* === SIDEBAR === */
+  .sidebar {
+    background: var(--sidebar-bg);
+    padding: 56px 32px;
+  }
+  .photo-wrap {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ddd;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+  .photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .sb-name {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.15;
+    margin: 0 0 6px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .sb-role {
+    font-size: 12px;
+    text-align: center;
+    color: var(--accent-deep);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .sb-tagline {
+    font-size: 12.5px;
+    text-align: center;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 32px;
+    line-height: 1.4;
+  }
+
+  .sb-section { margin-bottom: 28px; }
+  .sb-h-row {
+    display: flex; align-items: center; gap: 10px;
+    margin: 0 0 14px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+  }
+  .sb-h-row .icon {
+    width: 26px; height: 26px;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .sb-h {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sb-section p,
+  .sb-section .row {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 7px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sb-section .row strong { color: var(--ink); font-weight: 600; }
+  .sb-section .row .ic {
+    width: 14px; height: 14px; flex-shrink: 0;
+    color: var(--accent-deep);
+  }
+  .sb-section a {
+    color: var(--accent-deep);
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  /* skill bars */
+  .skill-row {
+    display: flex; align-items: center;
+    margin-bottom: 9px;
+    font-size: 12.5px;
+  }
+  .skill-row .lbl {
+    flex: 0 0 130px;
+    color: var(--ink-soft);
+    line-height: 1.25;
+  }
+  .skill-row .bar {
+    flex: 1; height: 7px;
+    background: #e1dccf;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .skill-row .bar .fill {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+  }
+  .skill-row.top .lbl { color: var(--ink); font-weight: 600; }
+  .skill-row.top .bar .fill {
+    background: linear-gradient(90deg, var(--accent), var(--accent-deep));
+  }
+
+  .lang-row {
+    display: flex; justify-content: space-between;
+    font-size: 12.5px; color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .lang-row .dots { display: inline-flex; gap: 3px; }
+  .lang-row .dot { width: 8px; height: 8px; border-radius: 50%; background: #d3cdbf; }
+  .lang-row .dot.on { background: var(--accent); }
+
+  /* sidebar proud-of list */
+  .proud-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .proud-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .proud-list li .pl-ic {
+    flex: 0 0 26px;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(184,132,80,0.25);
+    margin-top: 1px;
+  }
+  .proud-list li strong { color: var(--ink); font-weight: 700; }
+
+  /* === MAIN === */
+  .main { padding: 56px 48px; }
+  .main .summary {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    border-left: 3px solid var(--accent);
+    padding-left: 16px;
+  }
+  .main .summary strong { color: var(--ink); font-weight: 600; }
+
+  /* HOOK TAGLINE */
+  .hook { margin-bottom: 18px; }
+  .hook-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .hook-line {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .hook-line .hl {
+    background: linear-gradient(120deg, transparent 0%, transparent 12%, rgba(184,132,80,0.22) 12%, rgba(184,132,80,0.22) 88%, transparent 88%);
+    padding: 2px 0;
+  }
+  .hook-sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .hook-sub strong { color: var(--ink); font-weight: 600; }
+
+  /* OPEN TO BANNER */
+  .open-to {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, rgba(31,111,92,0.06), rgba(184,132,80,0.06));
+    border: 1px solid rgba(31,111,92,0.25);
+    border-radius: 12px;
+    margin-bottom: 22px;
+  }
+  .ot-pulse {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #1f6f5c;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(31,111,92,0.6);
+    animation: ot-pulse 2.4s infinite;
+  }
+  @keyframes ot-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(31,111,92,0.55); }
+    70% { box-shadow: 0 0 0 12px rgba(31,111,92,0); }
+    100% { box-shadow: 0 0 0 0 rgba(31,111,92,0); }
+  }
+  .ot-text { flex: 1; line-height: 1.4; }
+  .ot-text strong { display: block; font-size: 13.5px; color: #1f6f5c; font-weight: 700; }
+  .ot-text span { display: block; font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+  .ot-cta {
+    background: #1f6f5c;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .ot-cta:hover { background: #155544; }
+
+  /* ATS KEYWORD LINE */
+  .ats-keywords {
+    font-size: 11.5px;
+    color: var(--ink-mute);
+    line-height: 1.7;
+    margin: 0 0 24px;
+    padding: 12px 14px;
+    background: rgba(31,111,92,0.04);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+  }
+  .ats-keywords strong { color: var(--ink-soft); font-weight: 600; margin-right: 6px; }
+
+  /* SIGNATURE WINS */
+  .wins { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .win {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 16px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .win .num {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent-deep);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .win h3 {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+  .win .win-meta {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--accent-deep);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .win p { font-size: 13px; color: var(--ink-soft); line-height: 1.6; margin: 0 0 6px; }
+  .win p strong { color: var(--ink); font-weight: 600; }
+  .win .outcome {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--rule);
+    font-size: 12.5px;
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .testimonial {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 18px 20px;
+    position: relative;
+    box-shadow: var(--shadow);
+  }
+  .testimonial::before {
+    content: '\201C';
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 56px;
+    color: var(--accent);
+    opacity: 0.35;
+    position: absolute;
+    top: -2px;
+    left: 12px;
+    line-height: 1;
+    font-weight: 800;
+  }
+  .testimonial .t-quote {
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.55;
+    font-style: italic;
+    margin: 0 0 10px;
+    padding-left: 22px;
+  }
+  .testimonial .t-attr {
+    font-size: 11.5px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    padding-left: 22px;
+  }
+  .testimonial .t-attr strong { color: var(--accent-deep); font-weight: 700; }
+
+  /* SIGNAL CARDS (credentials, not quotes) */
+  .signal-card {
+    background: linear-gradient(135deg, var(--paper) 0%, var(--accent-soft) 100%);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent-deep);
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .signal-label {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--accent-deep);
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .signal-label::before {
+    content: '';
+    width: 22px;
+    height: 22px;
+    background: var(--accent-deep) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2'/></svg>") center / 14px no-repeat;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .signal-body {
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.55;
+    margin: 0 0 8px;
+  }
+  .signal-body strong { color: var(--ink); font-weight: 700; }
+  .signal-attr {
+    font-size: 11.5px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* CTA FOOTER */
+  .cta-footer {
+    margin-top: 36px;
+    padding: 28px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    color: #fff;
+    border-radius: 14px;
+    text-align: center;
+  }
+  .cta-footer h3 {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    margin: 0 0 6px;
+    font-weight: 700;
+  }
+  .cta-footer p { font-size: 14px; margin: 0 0 16px; opacity: 0.92; }
+  .cta-footer .cta-buttons { display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .cta-footer .cta-btn {
+    background: #fff;
+    color: var(--accent-deep);
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: transform 0.2s;
+  }
+  .cta-footer .cta-btn:hover { transform: translateY(-2px); }
+  .cta-footer .cta-btn.outline {
+    background: transparent;
+    border: 1.5px solid #fff;
+    color: #fff;
+  }
+
+  /* leadership philosophy quote */
+  .philosophy {
+    background: var(--quote-bg);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .philosophy::before {
+    content: '\201C';
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 80px;
+    color: var(--accent);
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    line-height: 1;
+    font-weight: 800;
+    opacity: 0.5;
+  }
+  .philosophy .quote {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin: 0 0 12px;
+    padding-left: 32px;
+    font-weight: 600;
+  }
+  .philosophy .attribution {
+    font-size: 11.5px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: right;
+    font-weight: 600;
+  }
+  .philosophy .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+    padding-left: 32px;
+  }
+  .philosophy .pillar {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .philosophy .pillar .p-title {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent-deep);
+    margin: 0 0 4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .philosophy .pillar .p-body {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* main section heading */
+  .main h2.section {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 32px 0 18px;
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .main h2.section .h-icon {
+    width: 32px; height: 32px;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(184,132,80,0.3);
+  }
+
+  /* highlight metrics */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .metric {
+    text-align: center;
+    padding: 14px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: var(--paper);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .metric:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .metric .num {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--accent-deep);
+    margin-bottom: 2px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .metric .lbl {
+    font-size: 11px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+  }
+
+  /* Proud-of cards */
+  .proud-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .proud-card {
+    background: linear-gradient(135deg, var(--paper) 0%, var(--accent-soft) 100%);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .proud-card .pc-h {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 6px;
+  }
+  .proud-card .pc-icon {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(184,132,80,0.3);
+  }
+  .proud-card .pc-title {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.25;
+  }
+  .proud-card .pc-body {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .proud-card .pc-body strong { color: var(--ink); font-weight: 600; }
+
+  /* experience */
+  .role {
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .role:last-child { border-bottom: none; }
+  .role-head {
+    display: flex; justify-content: space-between;
+    align-items: baseline; flex-wrap: wrap;
+    margin-bottom: 4px;
+    gap: 8px;
+  }
+  .role-title {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+  .role-when {
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+  .role-org {
+    font-size: 13.5px;
+    color: var(--accent-deep);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .role-desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin: 0;
+  }
+  .role-desc strong { color: var(--ink); font-weight: 600; }
+  .current-flag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* education */
+  .edu-row { margin-bottom: 14px; }
+  .edu-row .when {
+    font-size: 11.5px; color: var(--ink-mute);
+    text-transform: uppercase; letter-spacing: 1.2px;
+    margin-bottom: 2px; font-weight: 600;
+  }
+  .edu-row .what {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-size: 15px; font-weight: 700; color: var(--ink);
+    margin: 0;
+  }
+  .edu-row .where {
+    font-size: 13px; color: var(--ink-soft); margin-top: 2px;
+  }
+
+  /* references */
+  .refs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .ref {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .ref .ref-name {
+    font-family: 'Bricolage Grotesque', 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 14px;
+    margin: 0 0 2px;
+  }
+  .ref .ref-org { font-size: 12.5px; color: var(--ink-mute); margin: 0 0 4px; }
+  .ref .ref-email { font-size: 12.5px; color: var(--accent-deep); margin: 0; }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; max-width: none; min-height: 0; }
+    .role, .metric, .proud-card, .philosophy, section { break-inside: avoid; page-break-inside: avoid; }
+    .metric:hover { transform: none; }
+  }
+  @media (max-width: 820px) {
+    .page { grid-template-columns: 1fr; }
+    .sidebar { padding: 40px 28px 32px; }
+    .main { padding: 36px 28px; }
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .proud-grid { grid-template-columns: 1fr; }
+    .philosophy .pillars { grid-template-columns: 1fr; padding-left: 0; }
+    .philosophy .quote { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============== SIDEBAR ============== -->
+  <aside class="sidebar">
+    <div class="photo-wrap">
+      <img src="https://drive.google.com/thumbnail?id=10X_6bwfHoxTMi6z0htsFMvubNdF7j2eI&sz=w800" alt="Prasanta Kumar Dasgupta" referrerpolicy="no-referrer">
+    </div>
+    <h1 class="sb-name">Prasanta Kumar<br>Dasgupta</h1>
+    <div class="sb-role">Software Engineering Manager</div>
+    <div class="sb-tagline">Building teams that ship at scale —<br>and grow people along the way</div>
+
+    <!-- CONTACT -->
+    <div class="sb-section">
+      <div class="sb-h-row">
+        <span class="icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </span>
+        <h3 class="sb-h">Contact</h3>
+      </div>
+      <p class="row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <strong>Hyderabad, India</strong>
+      </p>
+      <p class="row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91 9916600073
+      </p>
+      <p class="row">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:prashant.dasgupta3@gmail.com">prashant.dasgupta3@gmail.com</a>
+      </p>
+      <p class="row">
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://www.linkedin.com/in/pkdasgupta/" target="_blank">linkedin.com/in/pkdasgupta</a>
+      </p>
+      <p class="row">
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        <a href="https://github.com/pkdasgupta" target="_blank">github.com/pkdasgupta</a>
+      </p>
+    </div>
+
+    <!-- LEADERSHIP -->
+    <div class="sb-section">
+      <div class="sb-h-row">
+        <span class="icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+        </span>
+        <h3 class="sb-h">Leadership</h3>
+      </div>
+      <div class="skill-row top"><span class="lbl">AI-First Mindset</span><span class="bar"><span class="fill" style="width:100%"></span></span></div>
+      <div class="skill-row top"><span class="lbl">People-First Culture</span><span class="bar"><span class="fill" style="width:100%"></span></span></div>
+      <div class="skill-row"><span class="lbl">People Management</span><span class="bar"><span class="fill" style="width:96%"></span></span></div>
+      <div class="skill-row"><span class="lbl">Engineering Leadership</span><span class="bar"><span class="fill" style="width:94%"></span></span></div>
+      <div class="skill-row"><span class="lbl">Talent Development</span><span class="bar"><span class="fill" style="width:96%"></span></span></div>
+      <div class="skill-row"><span class="lbl">Cross-Functional</span><span class="bar"><span class="fill" style="width:92%"></span></span></div>
+      <div class="skill-row"><span class="lbl">Innovation &amp; Collaboration</span><span class="bar"><span class="fill" style="width:94%"></span></span></div>
+    </div>
+
+    <!-- ENGINEERING -->
+    <div class="sb-section">
+      <div class="sb-h-row">
+        <span class="icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <h3 class="sb-h">Engineering</h3>
+      </div>
+      <div class="skill-row top"><span class="lbl">Agentic AI Skills</span><span class="bar"><span class="fill" style="width:100%"></span></span></div>
+      <div class="skill-row"><span class="lbl">Experience Platform</span><span class="bar"><span class="fill" style="width:92%"></span></span></div>
+      <div class="skill-row"><span class="lbl">Large-Scale Production</span><span class="bar"><span class="fill" style="width:94%"></span></span></div>
+      <div class="skill-row"><span class="lbl">SRE / Reliability</span><span class="bar"><span class="fill" style="width:94%"></span></span></div>
+      <div class="skill-row"><span class="lbl">DevOps / CI-CD</span><span class="bar"><span class="fill" style="width:92%"></span></span></div>
+      <div class="skill-row"><span class="lbl">AWS &amp; Azure</span><span class="bar"><span class="fill" style="width:88%"></span></span></div>
+      <div class="skill-row"><span class="lbl">AI / MCP Tooling</span><span class="bar"><span class="fill" style="width:90%"></span></span></div>
+    </div>
+
+    <!-- WHAT I'M PROUD OF -->
+    <div class="sb-section">
+      <div class="sb-h-row">
+        <span class="icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+        </span>
+        <h3 class="sb-h">Proud Of · recent year</h3>
+      </div>
+      <ul class="proud-list">
+        <li>
+          <span class="pl-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span><strong>top-tier manager-effectiveness rating</strong> in latest internal survey</span>
+        </li>
+        <li>
+          <span class="pl-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span><strong>Zero attrition</strong> across three reorgs</span>
+        </li>
+        <li>
+          <span class="pl-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg></span>
+          <span><strong>5 promotions</strong> sponsored this cycle (across Principal, Senior, and Member-engineer levels)</span>
+        </li>
+        <li>
+          <span class="pl-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1"/></svg></span>
+          <span><strong>~100% adoption</strong> of dev-productivity AI tools</span>
+        </li>
+        <li>
+          <span class="pl-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.36 2.64"/></svg></span>
+          <span><strong>23% trust reduction</strong> vs 20% target across 3 teams</span>
+        </li>
+        <li>
+          <span class="pl-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+          <span><strong>Cross-cloud architecture</strong> stewardship to GA</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="sb-section">
+      <div class="sb-h-row">
+        <span class="icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </span>
+        <h3 class="sb-h">Languages</h3>
+      </div>
+      <div class="lang-row"><span>English</span><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></div>
+      <div class="lang-row"><span>Bangla</span><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span></div>
+      <div class="lang-row"><span>Hindi</span><span class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span></div>
+    </div>
+
+    <!-- BEYOND WORK -->
+    <div class="sb-section">
+      <div class="sb-h-row">
+        <span class="icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </span>
+        <h3 class="sb-h">Beyond Work</h3>
+      </div>
+      <p class="row">Personal Finance</p>
+      <p class="row">Volunteering</p>
+      <p class="row">Travelling</p>
+    </div>
+
+  </aside>
+
+  <!-- ============== MAIN ============== -->
+  <main class="main">
+
+    <!-- HOOK TAGLINE -->
+    <div class="hook">
+      <span class="hook-eyebrow">Senior Engineering Manager</span>
+      <h2 class="hook-line">I turn <span class="hl">confusion into clarity</span> — and teams into multipliers.</h2>
+      <p class="hook-sub">15+ years across <strong>Salesforce · Microsoft · Samsung R&amp;D · Yahoo!</strong> · 14 engineers managed today (junior → lead engineer) · zero attrition through 3 reorgs · ~100% AI-tooling adoption org-wide.</p>
+    </div>
+
+    <!-- OPEN-TO BANNER -->
+    <div class="open-to">
+      <div class="ot-pulse"></div>
+      <div class="ot-text">
+        <strong>Open to Senior Engineering Manager roles</strong>
+        <span>Hyderabad / remote-first / open to relocation · US Business Visa in hand · Notice period: 30 days</span>
+      </div>
+      <a class="ot-cta" href="mailto:prashant.dasgupta3@gmail.com">Let's talk →</a>
+    </div>
+
+    <p style="margin: 0 0 22px; font-size:13px; color: var(--ink-mute); text-align:right;">→ Explore <a href="work.html" style="color: var(--accent-deep); font-weight:600; text-decoration: none; border-bottom: 1px dotted var(--accent-deep);">Selected Work · 8 case studies</a> &nbsp;·&nbsp; <a href="chat.html" style="color: var(--accent-deep); font-weight:600; text-decoration: none; border-bottom: 1px dotted var(--accent-deep);">Ask Anything · live Q&amp;A</a></p>
+
+    <p class="summary">
+      Software Engineering Manager with 15+ years building and scaling distributed teams across web platform, content infrastructure, and reliability engineering. Currently lead two teams at Salesforce — <strong>Salesforce platform org</strong> (cross-surface experience layer powering agentic surfaces) and previously <strong>Web Platform team</strong> (headless rendering layer behind flagship marketing properties). Manage <strong>14 engineers spanning junior through lead engineer</strong>; sponsor cross-cloud architectural alignment; deliver on-time customer GAs; and grow people through every reorg.
+    </p>
+
+    <!-- ATS-FRIENDLY KEYWORD LINE -->
+    <p class="ats-keywords"><strong>Core skills:</strong> Engineering Management · People Management · Talent Development · Cross-Functional Leadership · AI/ML Platforms · Agentic AI · MCP Tooling · Claude Code · Web Platform · Headless Rendering · Content Management ·  content· Data Cloud · Site Reliability Engineering · DevOps · CI/CD · AWS · Azure · Heroku · Kubernetes · Observability · SLO/SLA · Incident Response · Java · Python · Node.js · LWC · Connect APIs · Distributed Systems · Microservices · Cloud Architecture · Salesforce Platform · Agentforce · Stakeholder Management · OKRs · OKR-style goals</p>
+
+    <!-- LEADERSHIP PHILOSOPHY -->
+    <div class="philosophy">
+      <p class="quote">I coach my people so they're ready for a better job tomorrow — and treat them so they choose to stay today.</p>
+      <div class="attribution">— Leadership First Principle</div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="p-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1"/></svg>
+            AI-First Mindset
+          </div>
+          <p class="p-body">AI-native engineering culture. Build internal MCP tools, ship Claude Code skills, automate trust triage and release planning. Drove <strong>~100% org-wide adoption of developer-productivity tools</strong> — shorter engineering cycles, greater capacity with fewer resources.</p>
+        </div>
+        <div class="pillar">
+          <div class="p-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            People-First Culture
+          </div>
+          <p class="p-body">Every IC's career trajectory continues — through reorgs, transitions, charter changes. <strong>Zero attrition</strong> across three org transitions; <strong>top-tier manager-effectiveness rating</strong> in the latest internal survey.</p>
+        </div>
+        <div class="pillar">
+          <div class="p-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M2 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/><path d="M14 14h3a5 5 0 0 1 5 5v2"/></svg>
+            Collaboration at Core
+          </div>
+          <p class="p-body">Cross-cloud architectural reviews, multi-team release coordination, and stakeholder alignment across PM, UX, and adjacent platform orgs. <strong>Partnership is the default</strong>, escalation the exception.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAREER HIGHLIGHTS -->
+    <h2 class="section">
+      <span class="h-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>
+      </span>
+      Career Highlights
+    </h2>
+    <div class="metrics">
+      <div class="metric"><div class="num">15+</div><div class="lbl">Years in industry</div></div>
+      <div class="metric"><div class="num">5+</div><div class="lbl">Teams managed</div></div>
+      <div class="metric"><div class="num">14</div><div class="lbl">Engineers led<br>junior → lead engineer</div></div>
+      <div class="metric"><div class="num">100%</div><div class="lbl">Effective Manager<br>latest internal survey</div></div>
+      <div class="metric"><div class="num">23%</div><div class="lbl">Trust reduction<br>vs 20% target</div></div>
+      <div class="metric"><div class="num">99%</div><div class="lbl">AI-assisted TF<br>resolution at freeze</div></div>
+      <div class="metric"><div class="num">99.9%</div><div class="lbl">Uptime on flagship<br>web surfaces</div></div>
+      <div class="metric"><div class="num">Zero</div><div class="lbl">Attrition across<br>three reorgs</div></div>
+    </div>
+
+    <!-- SIGNATURE WINS -->
+    <h2 class="section">
+      <span class="h-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      </span>
+      Signature Wins
+    </h2>
+    <div class="wins">
+      <div class="win">
+        <div class="num">01</div>
+        <div>
+          <h3>Zero Attrition Through 3 Reorgs</h3>
+          <div class="win-meta">Mar 2025 — Apr 2026 · People Leadership</div>
+          <p><strong>Context:</strong> Across three org transitions — including the abrupt AHS team transition, the merger of GIP+CIS+CP+(redacted)s for the Personalisation charter, and finally the Personalisation charter exit — the typical industry signal would have been 30–40% IC churn.</p>
+          <p><strong>Action:</strong> Personally conducted comp reviews and growth commitments with every transitioning IC. Coordinated CODEOWNERS updates, product-tag migrations, trust handoff, and Workday transfers without delivery disruption. Built individual transition playbooks (e.g., Lead Engineer promotion review canvases for incoming managers).</p>
+          <div class="outcome">↳ Outcome: Career trajectory continued for every IC. A former direct report proactively returned months later for promo packet guidance — a signal of sustained trust beyond reporting lines.</div>
+        </div>
+      </div>
+
+      <div class="win">
+        <div class="num">02</div>
+        <div>
+          <h3>AI-First Engineering Culture at Org Scale</h3>
+          <div class="win-meta">past year — recent year · AI-Native Leadership</div>
+          <p><strong>Context:</strong> Engineering managers org-wide were spending 5–10 hours/week translating charter items, PRDs, and spreadsheets into GUS work items — a tax that compounded across every planning cycle.</p>
+          <p><strong>Action:</strong> Built and shipped <strong>AI Release Planner</strong> (charter-to-GUS automation), <strong>Wavelength</strong> hyper-personalization skill (auto-discovers user context from GUS + Slack + Memory), and <strong>AI Trust Hero</strong> framework. Co-organized weekly Claude Code Skill-Up Sessions with structured org-wide recaps. Custom MCP servers expose GUS workflows to Claude Code.</p>
+          <div class="outcome">↳ Outcome: ~100% org-wide adoption. 99% of test failures AI-assist-resolved at the 262 release freeze across 3 teams. Team subsequently shipped 6+ Claude Code skills automating SDLC workflows.</div>
+        </div>
+      </div>
+
+      <div class="win">
+        <div class="num">03</div>
+        <div>
+          <h3>23% Trust Reduction Across 4 Teams Under VP Reporting</h3>
+          <div class="win-meta">past year · Crisis-Mode Delivery</div>
+          <p><strong>Context:</strong> Reported directly to VP for the combined GIP+CIS+CP+(redacted)s trust scope while peer EM was on parental leave — with a 20% reduction target and a 40% baseline.</p>
+          <p><strong>Action:</strong> Drove multi-patch sign-offs across releases (260.10, 260.11, 262 freeze across 3 teams). Led release sign-off, planned-trust TF hygiene, and customer-escalation RCA closures. Built AI-assisted resolution flow for high-priority test failures.</p>
+          <div class="outcome">↳ Outcome: 23% reduction vs 20% target. Independent execution recognized at VP level. Team-of-the-Year Recognitions (past year).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <h2 class="section">
+      <span class="h-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
+      What People Say
+    </h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p class="t-quote">I see you as a great example and model for the rest of the Engineering Managers at our org. You will be missed.</p>
+        <p class="t-attr"><strong>Peer Engineering Manager</strong> · cross-team Salesforce business unit</p>
+      </div>
+      <div class="testimonial">
+        <p class="t-quote">Thank you for chasing this down for us — your follow-through is genuinely something else.</p>
+        <p class="t-attr"><strong>Senior Engineering Leader</strong> · Salesforce</p>
+      </div>
+      <div class="signal-card">
+        <div class="signal-label">Team-of-the-Year Recognition</div>
+        <p class="signal-body">Selected from <strong>320+ nominated teams</strong> across Salesforce Technology &amp; Product. <strong>37 winning teams · ~550 individuals</strong> recognized by Cloud and Org leaders for impact across Customers, Innovation, Business, High Performance, People, and AI &amp; Agents.</p>
+        <p class="signal-attr">Salesforce Platform · org-wide recognition</p>
+      </div>
+      <div class="signal-card">
+        <div class="signal-label">Validated Leadership Signals</div>
+        <p class="signal-body"><strong>Top performance rating in latest annual review</strong> · <strong>top-tier manager-effectiveness rating</strong> in latest internal manager-effectiveness survey · <strong>Zero attrition</strong> across three reorgs · <strong>5 promotions sponsored</strong> in recent promotion cycle (across Principal, Senior, and Member-engineer levels).</p>
+        <p class="signal-attr">Salesforce Engineering</p>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <h2 class="section">
+      <span class="h-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </span>
+      Experience
+    </h2>
+
+    <div class="role">
+      <div class="role-head">
+        <h3 class="role-title">Software Engineering Manager — Salesforce platform org <span class="current-flag">Now</span></h3>
+        <div class="role-when">Jul 2024 — Present</div>
+      </div>
+      <div class="role-org">Salesforce — Hyderabad</div>
+      <p class="role-desc">
+        Lead two engineering teams in the Salesforce platform org powering authoring infrastructure and content metadata for AI-agent surfaces. Manage <strong>14 engineers spanning junior through lead engineer</strong>. Drive a visual authoring framework targeting Beta + GA, multi-release content data integration toward a major release event, and trust + reliability commitments across parallel release trains. Sponsor cross-cloud architectural alignment with adjacent platform teams. Sustain a culture of disciplined release execution and AI-first productivity. Sponsored <strong>five promotion nominations</strong> across Principal, Senior, and Member-engineer levels and held <strong>zero attrition</strong> through three org transitions.
+      </p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3 class="role-title">Senior Engineer — Web Platform team</h3>
+        <div class="role-when">Jun 2021 — Jun 2024</div>
+      </div>
+      <div class="role-org">Salesforce — Hyderabad</div>
+      <p class="role-desc">
+        Drove cross-functional initiatives on the headless rendering layer behind flagship marketing properties. Led framework-agnostic rendering to GA, regional and locale launches, content-compliance CDN redesign, certificate-management automation, and a public-CDN migration. Reduced build &amp; deployment times <strong>~30%</strong>, sustained <strong>99.9% uptime</strong> on customer-facing surfaces, and eliminated certificate-related production outages post-automation.
+      </p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3 class="role-title">Senior DevOps Engineer</h3>
+        <div class="role-when">May 2017 — Jun 2021</div>
+      </div>
+      <div class="role-org">Microsoft — Hyderabad</div>
+      <p class="role-desc">
+        Led reliability and automation for a global business-applications SaaS on Azure. Contributed to onboarding, environment design, capacity planning, deployment, and servicing for <strong>~4,500 customer environments</strong>. Sustained near-100% availability through proactive issue resolution and on-call ownership.
+      </p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3 class="role-title">Technical Lead — DevOps</h3>
+        <div class="role-when">Jun 2015 — May 2017</div>
+      </div>
+      <div class="role-org">Samsung R&amp;D Institute India — Bengaluru</div>
+      <p class="role-desc">
+        Led DevOps initiatives across architecture design, cloud infrastructure setup, and backend operations for live and R&amp;D consumer products including a payments platform and a creator-network app. Built internal tooling and scalable workflows.
+      </p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3 class="role-title">Service Reliability Engineer</h3>
+        <div class="role-when">Dec 2013 — Jun 2015</div>
+      </div>
+      <div class="role-org">Yahoo! — Bangalore</div>
+      <p class="role-desc">
+        Managed back-end operations for high-visibility ads and data-platform services. Built automation that reduced incident resolution time by <strong>25%</strong>. Triaged production outages proactively to minimize downtime.
+      </p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3 class="role-title">Assistant System Engineer</h3>
+        <div class="role-when">Oct 2012 — Dec 2013</div>
+      </div>
+      <div class="role-org">Tata Consultancy Services</div>
+      <p class="role-desc">
+        Developer for a global trade-capture and trading system at an enterprise banking client — Unix and C++ integrations.
+      </p>
+    </div>
+
+    <!-- EDUCATION -->
+    <h2 class="section">
+      <span class="h-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 4 3 6 3s6-1 6-3v-5"/></svg>
+      </span>
+      Education
+    </h2>
+
+    <div class="edu-row">
+      <div class="when">Jan 2008 — Jan 2012</div>
+      <h3 class="what">Bachelor of Technology — Computer Science &amp; Engineering</h3>
+      <div class="where">West Bengal University of Technology, Asansol</div>
+    </div>
+
+    <div class="edu-row">
+      <div class="when">Jan 2004 — Jan 2008</div>
+      <h3 class="what">Senior Secondary — Pure Science</h3>
+      <div class="where">Chinmaya Vidyalaya, Bokaro · CBSE Board</div>
+    </div>
+
+    <!-- REFERENCES -->
+    <h2 class="section">
+      <span class="h-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </span>
+      References
+    </h2>
+    <div class="refs">
+      <div class="ref">
+        <p class="ref-name">Shubham Srivastava</p>
+        <p class="ref-org">Salesforce</p>
+        <p class="ref-email">s.srivastava@salesforce.com</p>
+      </div>
+      <div class="ref">
+        <p class="ref-name">(redacted)</p>
+        <p class="ref-org">Salesforce</p>
+        <p class="ref-email">umesh.tiwari@salesforce.com</p>
+      </div>
+    </div>
+
+    <!-- CTA FOOTER -->
+    <div class="cta-footer">
+      <h3>Let's build something that compounds.</h3>
+      <p>Open to Senior Engineering Manager conversations. US Business Visa in hand · open to relocation.</p>
+      <div class="cta-buttons">
+        <a class="cta-btn" href="mailto:prashant.dasgupta3@gmail.com">prashant.dasgupta3@gmail.com</a>
+        <a class="cta-btn outline" href="https://www.linkedin.com/in/pkdasgupta/" target="_blank">LinkedIn</a>
+        <a class="cta-btn outline" href="https://github.com/pkdasgupta" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═════════════════════════════════════════════════════════════════════
+     ASK PRASANTA · v3 · Conversational chat widget
+     ═════════════════════════════════════════════════════════════════════ -->
+<style>
+  /* Floating button */
+  #ap-fab {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #b88450 0%, #8a5a2b 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(138,90,43,0.35), 0 2px 6px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center; justify-content: center;
+    z-index: 9998;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  #ap-fab:hover { transform: scale(1.05); box-shadow: 0 12px 36px rgba(138,90,43,0.45), 0 2px 6px rgba(0,0,0,0.2); }
+  #ap-fab svg { width: 26px; height: 26px; }
+  #ap-fab .ap-pulse-dot {
+    position: absolute; top: 8px; right: 8px;
+    width: 10px; height: 10px;
+    background: #00d4aa;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0,212,170,0.6);
+    animation: ap-pulse 2.4s infinite;
+  }
+  @keyframes ap-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,212,170,0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(0,212,170,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,212,170,0); }
+  }
+  #ap-fab.open .ap-pulse-dot { display: none; }
+
+  /* First-visit tooltip near FAB */
+  #ap-tip {
+    position: fixed;
+    bottom: 96px; right: 24px;
+    background: #1a1a1a; color: #fff;
+    padding: 12px 14px 12px 16px;
+    border-radius: 12px;
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 240px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    z-index: 9997;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.4s, transform 0.4s;
+    pointer-events: none;
+  }
+  #ap-tip.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  #ap-tip::after {
+    content: '';
+    position: absolute;
+    bottom: -7px; right: 26px;
+    border: 7px solid transparent;
+    border-top-color: #1a1a1a;
+    border-bottom: 0;
+  }
+  #ap-tip strong { color: #ffd9a8; font-weight: 700; }
+  #ap-tip .ap-tip-close {
+    background: transparent; border: none; color: #fff; opacity: 0.5;
+    font-size: 18px; cursor: pointer; padding: 0 0 0 6px;
+    margin-left: 4px; line-height: 1;
+  }
+  #ap-tip .ap-tip-close:hover { opacity: 1; }
+
+  /* Chat panel */
+  #ap-panel {
+    position: fixed;
+    bottom: 100px; right: 24px;
+    width: min(420px, calc(100vw - 48px));
+    height: min(620px, calc(100vh - 140px));
+    background: #fff;
+    border: 1px solid #d9d3c8;
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.08);
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    animation: ap-slide-up 0.25s ease;
+  }
+  #ap-panel.open { display: flex; }
+  @keyframes ap-slide-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #ap-panel .ap-head {
+    padding: 16px 18px 14px;
+    background: linear-gradient(135deg, #b88450 0%, #8a5a2b 100%);
+    color: #fff;
+    display: flex; align-items: center; gap: 12px;
+  }
+  #ap-panel .ap-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background-image: url('pkd-photo.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(255,255,255,0.4);
+    flex-shrink: 0;
+    position: relative;
+  }
+  #ap-panel .ap-avatar::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 12px; height: 12px;
+    background: #00d4aa;
+    border: 2px solid #b88450;
+    border-radius: 50%;
+  }
+  #ap-panel .ap-title {
+    font-family: 'Bricolage Grotesque', Georgia, serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    flex: 1;
+  }
+  #ap-panel .ap-title small {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    opacity: 0.85;
+    margin-top: 3px;
+    letter-spacing: 0.3px;
+  }
+  #ap-panel .ap-actions { display: flex; gap: 4px; }
+  #ap-panel .ap-icon-btn {
+    background: transparent; border: none; color: #fff;
+    cursor: pointer; padding: 6px; line-height: 1;
+    opacity: 0.85; border-radius: 6px;
+    display: flex; align-items: center;
+  }
+  #ap-panel .ap-icon-btn:hover { opacity: 1; background: rgba(255,255,255,0.15); }
+  #ap-panel .ap-icon-btn svg { width: 18px; height: 18px; }
+
+  /* Conversation thread */
+  #ap-thread {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px 18px 8px;
+    background: #fafaf7;
+    scroll-behavior: smooth;
+  }
+  .ap-msg {
+    display: flex;
+    margin-bottom: 12px;
+    animation: ap-fade-in 0.3s ease;
+  }
+  @keyframes ap-fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .ap-msg.user { justify-content: flex-end; }
+  .ap-msg.bot { justify-content: flex-start; align-items: flex-start; gap: 8px; }
+  .ap-msg .ap-bubble {
+    max-width: 84%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  .ap-msg.user .ap-bubble {
+    background: linear-gradient(135deg, #b88450 0%, #8a5a2b 100%);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .ap-msg.bot .ap-bubble {
+    background: #fff;
+    color: #1a1a1a;
+    border: 1px solid #e6e3dc;
+    border-bottom-left-radius: 4px;
+  }
+  .ap-msg.bot .ap-bubble strong { font-weight: 700; }
+  .ap-msg.bot .ap-bubble em { font-style: italic; color: #4a4a4a; }
+  .ap-msg.bot .ap-bubble a { color: #8a5a2b; font-weight: 600; }
+  .ap-msg.bot .ap-mini-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background-image: url('pkd-photo.jpg');
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border: 1.5px solid #e6e3dc;
+  }
+
+  /* Inline action chips after bot answer */
+  .ap-actions-row {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin: 4px 0 6px 36px;
+    animation: ap-fade-in 0.4s ease;
+  }
+  .ap-action-btn {
+    background: rgba(184,132,80,0.08);
+    border: 1px solid rgba(184,132,80,0.25);
+    color: #8a5a2b;
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    display: inline-flex; align-items: center; gap: 4px;
+    transition: background 0.15s;
+  }
+  .ap-action-btn:hover { background: rgba(184,132,80,0.18); }
+  .ap-action-btn.email { background: #1f6f5c; color: #fff; border-color: #1f6f5c; }
+  .ap-action-btn.email:hover { background: #155544; }
+
+  /* Follow-up suggestion chips */
+  .ap-followups {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin: 0 0 14px 36px;
+    animation: ap-fade-in 0.5s ease;
+  }
+  .ap-followup-label {
+    font-size: 10.5px;
+    color: #8a8a8a;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+  .ap-followup {
+    background: #fff;
+    border: 1px solid #d9d3c8;
+    color: #4a4a4a;
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .ap-followup:hover { background: #f7ede0; border-color: #b88450; color: #8a5a2b; }
+
+  /* Typing indicator */
+  .ap-typing {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 12px;
+    animation: ap-fade-in 0.2s ease;
+  }
+  .ap-typing .ap-mini-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background-image: url('pkd-photo.jpg');
+    background-size: cover; background-position: center;
+    flex-shrink: 0;
+    border: 1.5px solid #e6e3dc;
+  }
+  .ap-typing .ap-dots {
+    background: #fff;
+    border: 1px solid #e6e3dc;
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    padding: 12px 14px;
+    display: flex; gap: 4px;
+  }
+  .ap-typing .ap-dot {
+    width: 7px; height: 7px;
+    background: #b88450;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: ap-bounce 1.2s infinite;
+  }
+  .ap-typing .ap-dot:nth-child(2) { animation-delay: 0.15s; }
+  .ap-typing .ap-dot:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes ap-bounce {
+    0%, 60%, 100% { opacity: 0.5; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  /* Starter chips above input (only when thread is empty) */
+  #ap-starters {
+    padding: 0 18px 10px;
+    background: #fafaf7;
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  #ap-starters.hidden { display: none; }
+
+  /* Input bar */
+  #ap-input-bar {
+    padding: 12px 14px;
+    border-top: 1px solid #d9d3c8;
+    background: #fff;
+    display: flex; gap: 8px; align-items: center;
+  }
+  #ap-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1.5px solid #d9d3c8;
+    border-radius: 22px;
+    font-family: inherit;
+    font-size: 13.5px;
+    color: #1a1a1a;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  #ap-input::placeholder { color: #8a8a8a; }
+  #ap-input:focus { border-color: #b88450; box-shadow: 0 0 0 3px rgba(184,132,80,0.15); }
+  #ap-send {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, #b88450 0%, #8a5a2b 100%);
+    border: none; border-radius: 50%;
+    cursor: pointer; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    transition: transform 0.15s, opacity 0.2s;
+  }
+  #ap-send:hover { transform: scale(1.08); }
+  #ap-send:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+  #ap-send svg { width: 16px; height: 16px; }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    #ap-panel {
+      bottom: 0; right: 0; left: 0;
+      width: 100%; height: 92vh;
+      border-radius: 18px 18px 0 0;
+    }
+    #ap-tip { display: none; }
+  }
+  @media print { #ap-fab, #ap-panel, #ap-tip { display: none !important; } }
+</style>
+
+<button id="ap-fab" aria-label="Ask about Prasanta">
+  <span class="ap-pulse-dot"></span>
+  <svg id="ap-fab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+</button>
+
+<div id="ap-tip" role="tooltip">
+  <strong>👋 Hiring for a Senior EM?</strong><br>
+  Ask me anything about Prasanta.
+  <button class="ap-tip-close" id="ap-tip-close" aria-label="Dismiss">×</button>
+</div>
+
+<div id="ap-panel" role="dialog" aria-label="Ask about Prasanta">
+  <div class="ap-head">
+    <div class="ap-avatar"></div>
+    <div class="ap-title">Prasanta · AI Concierge<small>Curated answers · in your browser · no LLM</small></div>
+    <div class="ap-actions">
+      <button class="ap-icon-btn" id="ap-reset-btn" title="New conversation" aria-label="Reset">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><polyline points="3 4 3 12 11 12"/></svg>
+      </button>
+      <button class="ap-icon-btn" id="ap-close-btn" title="Close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="ap-thread"></div>
+
+  <div id="ap-starters"></div>
+
+  <div id="ap-input-bar">
+    <input id="ap-input" type="text" placeholder="Ask anything… e.g. How does he grow people?" autocomplete="off"/>
+    <button id="ap-send" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function () {
+  const KB = [
+    { id: "roles", q: "What roles is he open to?",
+      a: "<strong>Senior Engineering Manager</strong> roles primarily. Also open to Director of Engineering for a defined platform / AI-infrastructure / dev-productivity domain, or Staff EM at AI-native companies.",
+      k: ["role","roles","looking","open","kind","type","level","seniority","director","staff","next","position","title"],
+      followups: ["different","relocation","notice"] },
+    { id: "relocation", q: "Is he open to relocation?",
+      a: "Yes — based in <strong>Hyderabad, India</strong> today, with a <strong>US Business Visa in hand</strong>. Open to remote-first, hybrid, or relocation (US, UK, EU, Singapore).",
+      k: ["relocate","relocation","move","based","location","visa","us","remote","hybrid","wfh","hyderabad","india","onsite","office","singapore","uk","europe","eu"],
+      followups: ["notice","active","contact"] },
+    { id: "notice", q: "What is his notice period?",
+      a: "<strong>30 days</strong>.",
+      k: ["notice","start","join","available","period","when","timeline"],
+      followups: ["active","contact","relocation"] },
+    { id: "active", q: "Is he active or passive in the market?",
+      a: "Currently leading high-impact charters at Salesforce. <strong>Open to conversations</strong> about Senior EM roles where he can compound impact — actively portfolio-ready, not actively interviewing.",
+      k: ["active","passive","looking","interviewing","market","searching","switch","leaving"],
+      followups: ["roles","contact","why-build"] },
+    { id: "different", q: "What makes him different from another EM with 15 years?",
+      a: "<strong>SRE-rooted EM who builds AI-first cultures and grows people through chaos.</strong><br><br>Three pillars:<br>(1) 12 yrs DevOps/reliability before EM — operational rigor + product execution<br>(2) Builds AI tooling, not just adopts it — Release Planner, Wavelength, Trust Hero, MCP servers, ~100% org-wide adoption<br>(3) Zero attrition through 3 reorgs, top-tier manager-effectiveness rating, 5 promotions sponsored in one cycle",
+      k: ["different","unique","differentiator","spike","stand","why","edge","special","value","brand"],
+      followups: ["philosophy","ai-tools","grow"] },
+    { id: "philosophy", q: "What is his leadership philosophy?",
+      a: "<em>\"I coach my people so they're ready for a better job tomorrow — and treat them so they choose to stay today.\"</em><br><br>The proof: zero attrition through 3 reorgs and a top-tier manager-effectiveness rating in the latest internal survey.",
+      k: ["philosophy","leadership","approach","principle","manage","values","style","beliefs","core","method"],
+      followups: ["grow","attrition","peers"] },
+    { id: "grow", q: "How does he grow people?",
+      a: "Three things compound:<br>(1) <strong>Coaching toward the next-grade scope</strong> before the cycle<br>(2) <strong>Promotion-pipeline sponsorship end-to-end</strong> — strategic business cases, talent-readiness narratives, stakeholder feedback orchestration, bias-mitigated framing<br>(3) <strong>Comp + growth commitments through reorgs</strong> — every transitioning IC's career trajectory continues",
+      k: ["grow","develop","talent","mentor","coach","career","growth","engineers","training","one-on-one","ic","direct"],
+      followups: ["promo","attrition","philosophy"] },
+    { id: "attrition", q: "Tell me about his zero-attrition record.",
+      a: "Across 18 months the team navigated <strong>three org transitions</strong>: an inbound team absorption, a major charter merger, and a charter exit. Industry baseline through that much change is 30–40% IC churn. Outcome: <strong>zero attrition</strong>. A former direct report proactively returned months later for promotion-packet guidance.",
+      k: ["attrition","retention","reorg","transition","churn","stay","leave","lose","kept","change"],
+      followups: ["philosophy","grow","peers"] },
+    { id: "team-size", q: "How many engineers does he manage?",
+      a: "<strong>14 engineers</strong> spanning junior through lead engineer. Two parallel teams in the Salesforce platform org.",
+      k: ["how many","size","manage","engineers","headcount","team","direct","reports","span"],
+      followups: ["current-team","grow","promo"] },
+    { id: "promo", q: "Tell me about the recent promotion cycle promotion cycle.",
+      a: "Sponsored <strong>5 promotion nominations in a single cycle</strong> — 1 Principal Engineer, 3 Senior Engineers, 1 Member Engineer. End-to-end packets: strategic business cases, talent-readiness narratives, broad stakeholder support, bias-mitigated framing.",
+      k: ["promotion","promote","promo","nominate","nominations","fy27","cycle","level","ladder"],
+      followups: ["grow","team-size","philosophy"] },
+    { id: "ai-tools", q: "What AI tools has he built?",
+      a: "<strong>AI Release Planner</strong> — charter → work items, 5–10 hr/wk saved per EM<br><strong>Wavelength</strong> — hyper-personalization skill that auto-discovers context across systems<br><strong>AI Trust Hero</strong> — test-failure triage; 99% AI-resolution at a release freeze<br><strong>Custom MCP servers</strong> exposing planning workflows to Claude Code<br><br>Drove <strong>~100% org-wide adoption</strong>.",
+      k: ["ai","ml","claude","mcp","tools","tooling","build","ai-first","automation","release","wavelength","trust","agents","gpt","llm"],
+      followups: ["ai-scale","trust","stack"] },
+    { id: "ai-scale", q: "What's an example of his AI-first leadership at scale?",
+      a: "He drove <strong>~100% adoption</strong> of dev-productivity AI tools across the org through: building tools himself, running weekly skill-up sessions, publishing structured org-wide recaps, and seeding team-built skills.<br><br>Result: <strong>99% AI-assisted resolution</strong> of test failures at a major release freeze across three teams. The team subsequently shipped 6+ Claude Code skills automating SDLC workflows.",
+      k: ["adoption","scale","org","ai culture","productivity","developer","skill","upskill","training"],
+      followups: ["ai-tools","trust","different"] },
+    { id: "trust", q: "Tell me about the 23% trust reduction.",
+      a: "During a peer EM's parental leave, took on combined trust ownership for <strong>4 merged teams</strong> while reporting directly to the senior engineering leader. Target: 20% reduction against a 40% baseline. Drove multi-patch sign-offs, release-freeze readiness, planned-trust hygiene, customer-escalation RCA closures, and stood up an AI-assisted resolution flow.<br><br>Outcome: <strong>23% reduction vs 20% target</strong>. Team named <strong>Team-of-the-Year Recognition</strong> — selected from 320+ nominated teams.",
+      k: ["trust","reduction","reliability","vp","parental","patch","release","sre","astro","award","freeze","quality","bugs"],
+      followups: ["sre","ai-tools","peers"] },
+    { id: "sre", q: "What is his reliability/SRE background?",
+      a: "12 yrs of DevOps + SRE before EM:<br>• <strong>Yahoo!</strong> — 25% faster incident resolution<br>• <strong>Samsung R&amp;D</strong> — cloud infra + DevOps<br>• <strong>Microsoft</strong> — reliability + automation for ~4,500 D365 envs on Azure<br>• <strong>Salesforce</strong> — 99.9% uptime on flagship marketing properties; ~30% faster builds",
+      k: ["sre","reliability","devops","uptime","yahoo","samsung","microsoft","azure","aws","background","experience","ops","incident"],
+      followups: ["history","stack","trust"] },
+    { id: "history", q: "What is his career history?",
+      a: "<strong>Salesforce</strong> — SEM (Jul 2024 — present), Senior Engineer Web Platform (2021 — 2024)<br><strong>Microsoft</strong> — Sr DevOps, D365 Azure (2017 — 2021)<br><strong>Samsung R&amp;D</strong> — Tech Lead DevOps (2015 — 2017)<br><strong>Yahoo!</strong> — SRE (2013 — 2015)<br><strong>TCS</strong> — ASE, Deutsche Bank (2012 — 2013)<br><br>15+ yrs total.",
+      k: ["history","career","experience","worked","companies","background","previous","past","resume","cv","journey","prior"],
+      followups: ["current-team","sre","education"] },
+    { id: "current-team", q: "What is his current team?",
+      a: "Two teams in the <strong>Salesforce platform org</strong> org — one focused on the cross-surface experience layer powering agentic surfaces, the other on content metadata. 14 engineers across both.",
+      k: ["current","team","rae","rich","agentic","report","manager","org","today","now","working"],
+      followups: ["team-size","ai-tools","architecture"] },
+    { id: "architecture", q: "How does he sponsor cross-cloud architecture?",
+      a: "His current charter requires architectural alignment with adjacent platform teams (data ingestion, schema, packaging, content rendition) on a customer-visible release tracked toward Salesforce's major release event. He sponsors cross-cloud architectural reviews, allowlisting decisions, and design patterns; negotiates capacity backfills with VP and skip-level; builds month-by-month delivery plans against capacity vs commitment.",
+      k: ["architecture","architect","cross-cloud","cross","platform","sponsorship","design","drb","alignment","systems","technical"],
+      followups: ["current-team","stack","trust"] },
+    { id: "award", q: "What recognition has his team received?",
+      a: "<strong>Team-of-the-Year Recognition</strong> — selected from 320+ nominated teams across Salesforce Technology — 37 winning teams total, recognized for impact across Customers, Innovation, Business, High Performance, People, and AI.",
+      k: ["recognition","award","astro","winner","achievement","honored","celebrate"],
+      followups: ["trust","peers","different"] },
+    { id: "peers", q: "What do peers say about him?",
+      a: "<em>\"I see you as a great example and model for the rest of the Engineering Managers at our org. You will be missed.\"</em><br>— peer Engineering Manager, cross-team Salesforce business unit<br><br><em>\"Thank you for chasing this down for us — your follow-through is genuinely something else.\"</em><br>— Senior Engineering Leader<br><br>Plus: <strong>top-tier manager-effectiveness rating</strong> in latest internal survey — every team member said yes.",
+      k: ["peer","feedback","quote","testimonial","reputation","manager","rating","gis","review","colleagues"],
+      followups: ["philosophy","attrition","different"] },
+    { id: "stack", q: "What is his tech stack?",
+      a: "<strong>Web/SaaS:</strong> Salesforce Platform, Agentforce, CMS, Data Cloud, LWC, Connect APIs, Heroku<br><strong>Cloud:</strong> AWS, Azure, CloudFront<br><strong>DevOps:</strong> CI/CD, Jenkins, Kafka, Redis, ELK, Python, Ruby, GitHub Actions<br><strong>AI:</strong> Claude Code, MCP, AI agents, prompt engineering<br><strong>SRE:</strong> observability, SLOs, incident response",
+      k: ["stack","tech","tools","skills","framework","technology","expertise","languages","programming","python","ruby","aws","azure"],
+      followups: ["sre","ai-tools","architecture"] },
+    { id: "contact", q: "How can I reach him?",
+      a: "<strong>Email:</strong> <a href=\"mailto:prashant.dasgupta3@gmail.com\">prashant.dasgupta3@gmail.com</a><br><strong>LinkedIn:</strong> <a href=\"https://www.linkedin.com/in/pkdasgupta/\" target=\"_blank\">linkedin.com/in/pkdasgupta</a><br><strong>Phone:</strong> +91 9916600073<br><strong>GitHub:</strong> <a href=\"https://github.com/pkdasgupta\" target=\"_blank\">github.com/pkdasgupta</a>",
+      k: ["reach","contact","email","phone","linkedin","github","connect","talk","chat","message","ping","touch"],
+      ctas: ["email","linkedin"],
+      followups: ["roles","relocation","why-build"] },
+    { id: "languages", q: "What languages does he speak?",
+      a: "English (professional/native), Bangla (native), Hindi (fluent).",
+      k: ["languages","english","hindi","bangla","speak","communicate"],
+      followups: ["history","contact"] },
+    { id: "education", q: "Where did he study?",
+      a: "<strong>Bachelor of Technology</strong>, CSE — West Bengal University of Technology, Asansol (2008–2012)<br><strong>Senior Secondary</strong>, Pure Science (CBSE) — Chinmaya Vidyalaya, Bokaro (2004–2008)",
+      k: ["education","study","studied","school","university","college","degree","graduate","engineering","cse"],
+      followups: ["history","sre"] },
+    { id: "beyond", q: "What does he do outside of work?",
+      a: "Personal finance (investing, FIRE-curious), volunteering, and travelling.",
+      k: ["hobby","hobbies","outside","weekend","personal","interests","fun","passion","life"],
+      followups: ["why-build","philosophy"] },
+    { id: "why-build", q: "Why did he build this portfolio?",
+      a: "Two reasons:<br>(1) Portfolio-ready for the right Senior EM conversation, even when not actively interviewing<br>(2) Building it himself was the most natural way to demonstrate the AI-first engineering he talks about — this Q&amp;A widget, the deploy script, and the underlying HTML are all things he shipped end-to-end as a single-evening project",
+      k: ["why","portfolio","site","build","reason","made","website","page"],
+      followups: ["ai-tools","contact","different"] }
+  ];
+
+  const SYNONYMS = {
+    "wfh": "remote work from home",
+    "comp": "compensation",
+    "yrs": "years",
+    "yoe": "experience",
+    "1on1": "one-on-one mentor coach",
+    "1:1": "one-on-one mentor coach",
+    "ic": "ic engineer",
+    "ics": "engineers ic",
+    "salary": "compensation",
+    "switch": "active job",
+    "background": "history experience",
+    "bg": "background history",
+    "story": "history career"
+  };
+  function expand(q) {
+    let s = ' ' + q.toLowerCase() + ' ';
+    Object.keys(SYNONYMS).forEach(k => {
+      const re = new RegExp('\\b' + k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '\\b', 'g');
+      s = s.replace(re, ' ' + SYNONYMS[k] + ' ');
+    });
+    return s;
+  }
+
+  const STOP = new Set(['the','a','an','is','are','was','were','be','been','have','has','do','does','did','will','would','could','should','can','to','of','in','on','at','for','with','by','about','as','from','what','when','where','who','how','why','your','you','i','my','me','his','he','him','they','them','their','prasanta','tell']);
+
+  function tokenize(s) {
+    return expand(s).replace(/[^a-z0-9\s'-]/g, ' ').split(/\s+/).filter(w => w.length > 1 && !STOP.has(w));
+  }
+  function score(q, e) {
+    const ts = tokenize(q); if (!ts.length) return 0;
+    const hay = (e.q + ' ' + e.k.join(' ') + ' ' + e.a.replace(/<[^>]+>/g, '')).toLowerCase();
+    let s = 0;
+    for (const t of ts) {
+      if (e.k.some(k => k.toLowerCase().includes(t))) s += 5;
+      if (e.q.toLowerCase().includes(t)) s += 3;
+      if (hay.includes(t)) s += 1;
+    }
+    if (ts.length >= 2) {
+      const hits = ts.filter(t => e.k.some(k => k.toLowerCase().includes(t))).length;
+      if (hits >= 2) s += hits * 2;
+    }
+    return s;
+  }
+  function search(q) {
+    if (!q.trim()) return null;
+    const sc = KB.map(e => ({ e, s: score(q, e) })).filter(x => x.s > 0);
+    sc.sort((a, b) => b.s - a.s);
+    return sc.length ? sc[0].e : null;
+  }
+  function findById(id) { return KB.find(e => e.id === id); }
+
+  const $fab = document.getElementById('ap-fab');
+  const $panel = document.getElementById('ap-panel');
+  const $close = document.getElementById('ap-close-btn');
+  const $reset = document.getElementById('ap-reset-btn');
+  const $thread = document.getElementById('ap-thread');
+  const $starters = document.getElementById('ap-starters');
+  const $input = document.getElementById('ap-input');
+  const $send = document.getElementById('ap-send');
+  const $tip = document.getElementById('ap-tip');
+  const $tipClose = document.getElementById('ap-tip-close');
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  }
+  function appendUser(text) {
+    const el = document.createElement('div');
+    el.className = 'ap-msg user';
+    el.innerHTML = `<div class="ap-bubble">${escapeHtml(text)}</div>`;
+    $thread.appendChild(el);
+    scrollDown();
+  }
+  function appendBot(html, opts) {
+    opts = opts || {};
+    const el = document.createElement('div');
+    el.className = 'ap-msg bot';
+    el.innerHTML = `<div class="ap-mini-avatar"></div><div class="ap-bubble">${html}</div>`;
+    $thread.appendChild(el);
+    if (opts.ctas && opts.ctas.length) {
+      const r = document.createElement('div');
+      r.className = 'ap-actions-row';
+      opts.ctas.forEach(cta => {
+        if (cta === 'email') {
+          r.insertAdjacentHTML('beforeend', '<a class="ap-action-btn email" href="mailto:prashant.dasgupta3@gmail.com">✉ Email Prasanta</a>');
+        } else if (cta === 'linkedin') {
+          r.insertAdjacentHTML('beforeend', '<a class="ap-action-btn" href="https://www.linkedin.com/in/pkdasgupta/" target="_blank">in/ LinkedIn</a>');
+        }
+      });
+      $thread.appendChild(r);
+    }
+    if (opts.followups && opts.followups.length) {
+      const f = document.createElement('div');
+      f.className = 'ap-followups';
+      f.innerHTML = '<div class="ap-followup-label">Related</div>';
+      opts.followups.forEach(id => {
+        const e = findById(id); if (!e) return;
+        const b = document.createElement('button');
+        b.className = 'ap-followup';
+        b.textContent = e.q;
+        b.onclick = () => ask(e.q, e);
+        f.appendChild(b);
+      });
+      $thread.appendChild(f);
+    }
+    scrollDown();
+  }
+  function appendTyping() {
+    const el = document.createElement('div');
+    el.className = 'ap-typing';
+    el.id = 'ap-typing-active';
+    el.innerHTML = `<div class="ap-mini-avatar"></div><div class="ap-dots"><span class="ap-dot"></span><span class="ap-dot"></span><span class="ap-dot"></span></div>`;
+    $thread.appendChild(el);
+    scrollDown();
+  }
+  function removeTyping() {
+    const t = document.getElementById('ap-typing-active');
+    if (t) t.remove();
+  }
+  function scrollDown() {
+    requestAnimationFrame(() => { $thread.scrollTop = $thread.scrollHeight; });
+  }
+
+  function ask(query, prematched) {
+    if (!query || !query.trim()) return;
+    appendUser(query);
+    hideStarters();
+    $input.value = '';
+    $send.disabled = true;
+    appendTyping();
+    const delay = 400 + Math.random() * 350;
+    setTimeout(() => {
+      removeTyping();
+      const e = prematched || search(query);
+      if (e) {
+        appendBot(e.a, { ctas: e.ctas, followups: e.followups });
+      } else {
+        appendBot(
+          "I don't have a great answer for that one. Try a different angle, or <a href=\"mailto:prashant.dasgupta3@gmail.com\">email Prasanta directly</a>.",
+          { ctas: ['email'], followups: ['roles','different','contact'] }
+        );
+      }
+      $send.disabled = false;
+    }, delay);
+  }
+
+  const STARTER_DEFS = [
+    { label: "What roles?", id: "roles" },
+    { label: "Why him?", id: "different" },
+    { label: "Grow people?", id: "grow" },
+    { label: "AI tools?", id: "ai-tools" },
+    { label: "Relocation?", id: "relocation" },
+    { label: "Reach him?", id: "contact" }
+  ];
+  function renderStarters() {
+    $starters.innerHTML = '';
+    STARTER_DEFS.forEach(s => {
+      const e = findById(s.id);
+      const b = document.createElement('button');
+      b.className = 'ap-followup';
+      b.textContent = s.label;
+      b.onclick = () => ask(e.q, e);
+      $starters.appendChild(b);
+    });
+  }
+  function hideStarters() { $starters.classList.add('hidden'); }
+  function showStarters() { $starters.classList.remove('hidden'); }
+
+  let welcomed = false;
+  function welcome() {
+    if (welcomed) return;
+    welcomed = true;
+    $thread.innerHTML = '';
+    appendBot(
+      "Hi! I'm an <strong>AI concierge</strong> for Prasanta's portfolio — built by him, runs in your browser, no LLM. Ask me anything below, or pick a starter.<br><br>I know about his role targeting, leadership style, AI work, reliability background, and how to reach him."
+    );
+    showStarters();
+  }
+  function reset() {
+    $thread.innerHTML = '';
+    welcomed = false;
+    welcome();
+  }
+
+  function maybeShowTip() {
+    try { if (localStorage.getItem('ap-tip-seen')) return; } catch(e) {}
+    setTimeout(() => {
+      $tip.classList.add('show');
+      setTimeout(() => $tip.classList.remove('show'), 8000);
+    }, 3500);
+  }
+  function dismissTip() {
+    $tip.classList.remove('show');
+    try { localStorage.setItem('ap-tip-seen', '1'); } catch(e) {}
+  }
+
+  $fab.addEventListener('click', () => {
+    const opening = !$panel.classList.contains('open');
+    $panel.classList.toggle('open');
+    $fab.classList.toggle('open');
+    dismissTip();
+    if (opening) {
+      welcome();
+      setTimeout(() => $input.focus(), 100);
+    }
+  });
+  $close.addEventListener('click', () => {
+    $panel.classList.remove('open');
+    $fab.classList.remove('open');
+  });
+  $reset.addEventListener('click', reset);
+  $tipClose.addEventListener('click', dismissTip);
+  $send.addEventListener('click', () => ask($input.value));
+  $input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); ask($input.value); }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && $panel.classList.contains('open')) {
+      $panel.classList.remove('open');
+      $fab.classList.remove('open');
+    }
+  });
+
+  renderStarters();
+  maybeShowTip();
+})();
+</script>
+
+</body>
+</html>

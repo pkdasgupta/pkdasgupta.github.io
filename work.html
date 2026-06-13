@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selected Work — Prasanta Kumar Dasgupta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ece8df;
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-mute: #8a8a8a;
+    --rule: #d9d3c8;
+    --accent: #b88450;
+    --accent-deep: #8a5a2b;
+    --accent-soft: #f7ede0;
+    --highlight: #fff8ec;
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 980px;
+    margin: 30px auto;
+    background: var(--paper);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    padding: 56px 56px 80px;
+  }
+
+  /* === NAV === */
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .topnav .brand {
+    font-family: 'Bricolage Grotesque', Georgia, serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .topnav nav {
+    display: flex;
+    gap: 22px;
+    font-size: 13.5px;
+  }
+  .topnav nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .topnav nav a:hover { color: var(--accent-deep); }
+  .topnav nav a.active { color: var(--accent-deep); font-weight: 700; }
+
+  /* === HERO === */
+  .hero {
+    margin-bottom: 44px;
+  }
+  .hero .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Bricolage Grotesque', Georgia, serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 680px;
+  }
+
+  /* === FILTER PILLS === */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+  .filter {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .filter.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* === CASE STUDY CARD === */
+  .case {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .case::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-family: 'Bricolage Grotesque', Georgia, serif;
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--accent-soft);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+  }
+  .case .domain {
+    display: inline-block;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-deep);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .case h3 {
+    font-family: 'Bricolage Grotesque', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    max-width: 80%;
+  }
+  .case .meta {
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .case .row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 18px;
+    margin-bottom: 12px;
+    align-items: baseline;
+  }
+  .case .row .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-deep);
+    font-weight: 700;
+  }
+  .case .row .body {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .case .row .body strong { color: var(--ink); font-weight: 600; }
+  .case .outcome-box {
+    margin-top: 18px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, var(--accent-soft) 0%, rgba(247,237,224,0.4) 100%);
+    border-radius: 10px;
+    border-left: 3px solid var(--accent);
+  }
+  .case .outcome-box .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-deep);
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .case .outcome-box .metrics {
+    font-size: 14.5px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .case .outcome-box .metrics strong {
+    color: var(--accent-deep);
+    font-weight: 700;
+  }
+  .case .tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--rule);
+  }
+  .case .tag {
+    background: rgba(184,132,80,0.08);
+    border: 1px solid rgba(184,132,80,0.2);
+    color: var(--accent-deep);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    color: var(--ink-mute);
+    font-size: 13px;
+  }
+  .footer a {
+    color: var(--accent-deep);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; max-width: none; }
+    .case { break-inside: avoid; page-break-inside: avoid; }
+  }
+  @media (max-width: 720px) {
+    .page { padding: 32px 22px; }
+    .hero h1 { font-size: 30px; }
+    .case { padding: 22px 24px; }
+    .case::before { font-size: 36px; top: 16px; right: 22px; }
+    .case h3 { font-size: 20px; max-width: 75%; }
+    .case .row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP NAV -->
+  <div class="topnav">
+    <a class="brand" href="index.html">Prasanta Kumar Dasgupta</a>
+    <nav>
+      <a href="index.html">Portfolio</a>
+      <a href="work.html" class="active">Selected Work</a>
+      <a href="chat.html">Ask Anything</a>
+      <a href="https://www.linkedin.com/in/pkdasgupta/" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="eyebrow">Selected Work · 2024 — 2026</span>
+    <h1>Eight stories of teams shipping calmly through change.</h1>
+    <p>A short tour of the work I'm proudest of as an engineering manager: people I've grown, charters I've absorbed, AI tooling I've shipped, and reliability bars my teams have held. Anonymized where confidentiality requires it; quantified everywhere I can.</p>
+  </div>
+
+  <!-- FILTER PILLS (visual only — non-interactive in v1) -->
+  <div class="filters">
+    <span class="filter active">All</span>
+    <span class="filter">People &amp; Talent</span>
+    <span class="filter">AI-First Engineering</span>
+    <span class="filter">Architectural Leadership</span>
+    <span class="filter">Trust &amp; Reliability</span>
+    <span class="filter">Web Platform</span>
+  </div>
+
+  <!-- CASE 01 — Zero attrition through 3 reorgs -->
+  <article class="case" data-num="01">
+    <span class="domain">People &amp; Talent</span>
+    <h3>Zero attrition through three org transitions.</h3>
+    <div class="meta">2025 — 2026 · 14 engineers · 3 reorgs · 2 charter changes</div>
+
+    <div class="row">
+      <div class="label">Context</div>
+      <div class="body">Across an 18-month window the team navigated three organizational transitions: an inbound team absorption, a major charter merger, and finally a charter exit. Industry baseline through that much change is 30–40% IC churn.</div>
+    </div>
+    <div class="row">
+      <div class="label">Action</div>
+      <div class="body">Personally conducted compensation reviews and growth commitments with every transitioning IC. Built individual transition playbooks, coordinated CODEOWNERS handoffs, product-tag migrations, trust ownership, and Workday transfers — without delivery disruption. Authored promotion-readiness handoff documents for incoming managers of moving ICs.</div>
+    </div>
+
+    <div class="outcome-box">
+      <span class="label">Outcome</span>
+      <div class="metrics"><strong>Zero attrition</strong> across all three transitions. Career trajectory continued for every engineer. <strong>top-tier manager-effectiveness rating</strong> score in the latest Great-Manager survey. A former direct report proactively returned months later for promotion-packet guidance — the strongest possible signal of sustained trust beyond reporting lines.</div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">People management</span><span class="tag">Org transitions</span><span class="tag">Talent retention</span><span class="tag">Career coaching</span>
+    </div>
+  </article>
+
+  <!-- CASE 02 — AI-First Engineering -->
+  <article class="case" data-num="02">
+    <span class="domain">AI-First Engineering</span>
+    <h3>Built &amp; shipped AI tools that the org actually uses.</h3>
+    <div class="meta">past year — recent year · ~100% org-wide adoption</div>
+
+    <div class="row">
+      <div class="label">Context</div>
+      <div class="body">Engineering managers across the org were spending 5–10 hours per week translating charter items, PRDs, and spreadsheets into work items. AI productivity gains were uneven — the tooling existed but adoption lagged.</div>
+    </div>
+    <div class="row">
+      <div class="label">Action</div>
+      <div class="body">Built and shipped an <strong>AI Release Planner</strong> that turns charter inputs directly into structured work items. Built a hyper-personalization skill that auto-discovers user context across systems. Designed an AI-assisted Trust Hero framework for test-failure triage and gack analysis. Wrote custom MCP servers exposing planning workflows to Claude Code. Co-organized weekly skill-up sessions with structured org-wide recaps.</div>
+    </div>
+
+    <div class="outcome-box">
+      <span class="label">Outcome</span>
+      <div class="metrics"><strong>~100% org-wide adoption</strong> of developer-productivity AI tools. <strong>5–10 hours/week saved per EM</strong> during planning cycles. Team subsequently shipped <strong>6+ Claude Code skills</strong> automating SDLC workflows. <strong>99% AI-assisted resolution</strong> of test failures at a major release freeze across three teams.</div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">AI/ML</span><span class="tag">MCP</span><span class="tag">Claude Code</span><span class="tag">Developer productivity</span><span class="tag">Trust automation</span>
+    </div>
+  </article>
+
+  <!-- CASE 03 — Trust reduction across 4 teams -->
+  <article class="case" data-num="03">
+    <span class="domain">Trust &amp; Reliability</span>
+    <h3>23% trust reduction across four teams while reporting to VP.</h3>
+    <div class="meta">past year · Team-of-the-Year Recognition</div>
+
+    <div class="row">
+      <div class="label">Context</div>
+      <div class="body">During a peer EM's parental leave, took on combined trust ownership for four merged teams while continuing to report directly to the senior engineering leader. Target: 20% reduction in trust debt against a 40% baseline.</div>
+    </div>
+    <div class="row">
+      <div class="label">Action</div>
+      <div class="body">Drove multi-patch sign-offs across release boundaries. Led release-freeze readiness, planned-trust hygiene, and customer-escalation RCA closures. Stood up an AI-assisted resolution flow for high-priority test failures. Independent execution end-to-end through the leave period.</div>
+    </div>
+
+    <div class="outcome-box">
+      <span class="label">Outcome</span>
+      <div class="metrics"><strong>23% reduction vs 20% target.</strong> Independent execution recognized at VP level. Team named <strong>Team-of-the-Year Recognition</strong> — selected from 320+ nominated teams across Salesforce Technology &amp; Product.</div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Site reliability</span><span class="tag">Crisis management</span><span class="tag">Release management</span><span class="tag">Trust ownership</span>
+    </div>
+  </article>
+
+  <!-- CASE 04 — Promotion sponsorship -->
+  <article class="case" data-num="04">
+    <span class="domain">People &amp; Talent</span>
+    <h3>Five promotion nominations sponsored in one cycle.</h3>
+    <div class="meta">recent promotion cycle · Across grades P6 → P9</div>
+
+    <div class="row">
+      <div class="label">Context</div>
+      <div class="body">A standard promotion cycle for a single team rarely produces more than 1–2 nominations. Going into recent promotion cycle, five engineers on the team were ready for the next-grade scope simultaneously — at every level from MTS to Principal Engineer.</div>
+    </div>
+    <div class="row">
+      <div class="label">Action</div>
+      <div class="body">Built end-to-end promotion packets for each nominee — strategic business cases, talent-readiness narratives, stakeholder feedback orchestration, bias-mitigated framing, and review-meeting talk tracks. Coached each nominee on shaping their work toward next-level scope across the preceding two release cycles.</div>
+    </div>
+
+    <div class="outcome-box">
+      <span class="label">Outcome</span>
+      <div class="metrics"><strong>5 nominations advanced</strong> through review with strong stakeholder support: 1× Principal Engineer, 3× Senior Engineer, 1× Engineer. <strong>broad stakeholder support</strong> across all five packets.</div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Talent development</span><span class="tag">Career sponsorship</span><span class="tag">Promotion process</span><span class="tag">Bias mitigation</span>
+    </div>
+  </article>
+
+  <!-- CASE 05 — Cross-cloud architectural sponsorship -->
+  <article class="case" data-num="05">
+    <span class="domain">Architectural Leadership</span>
+    <h3>Cross-cloud architectural alignment to a major release event.</h3>
+    <div class="meta">recent year · Multi-team · Multi-release</div>
+
+    <div class="row">
+      <div class="label">Context</div>
+      <div class="body">The team's charter required architectural alignment with adjacent platform teams (data ingestion, schema, packaging, content-rendition) on a customer-visible release tracked toward a major Salesforce release event. Multiple parallel feature streams, multi-cloud architectural reviews, and downstream consumer dependencies in flight.</div>
+    </div>
+    <div class="row">
+      <div class="label">Action</div>
+      <div class="body">Sponsored cross-cloud architectural reviews, allowlisting decisions, and design patterns across consumer teams. Negotiated capacity backfills with VP and skip-level for in-scope deliverables. Built month-by-month delivery plans against capacity vs. commitment, sequencing dependencies and gating risk explicitly.</div>
+    </div>
+
+    <div class="outcome-box">
+      <span class="label">Outcome</span>
+      <div class="metrics"><strong>4 release-event-targeted epics</strong> sequenced and delivered. ≥80% self-serve target on a flagship deployment flow. Backfill negotiated to keep an unstructured-search story in scope.</div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Cross-functional leadership</span><span class="tag">Architecture sponsorship</span><span class="tag">Capacity planning</span><span class="tag">Release planning</span>
+    </div>
+  </article>
+
+  <!-- CASE 06 — Web Platform team -->
+  <article class="case" data-num="06">
+    <span class="domain">Web Platform</span>
+    <h3>99.9% uptime &amp; ~30% faster builds on flagship marketing properties.</h3>
+    <div class="meta">2021 — 2024 · Senior Engineer</div>
+
+    <div class="row">
+      <div class="label">Context</div>
+      <div class="body">Owned cross-functional initiatives on a headless rendering layer behind multiple flagship customer-facing marketing properties. Multi-region launches, locale handling, content compliance, and certificate management — all running through one platform team.</div>
+    </div>
+    <div class="row">
+      <div class="label">Action</div>
+      <div class="body">Drove a framework-agnostic rendering layer to GA across multiple production releases. Led a regional launch with full localization. Designed a content-compliance CDN redesign and certificate-management automation. Coordinated a public-CDN migration. Built real-time monitoring + automated incident response.</div>
+    </div>
+
+    <div class="outcome-box">
+      <span class="label">Outcome</span>
+      <div class="metrics"><strong>99.9% uptime</strong> sustained on flagship customer-facing surfaces. <strong>~30% reduction</strong> in build &amp; deployment times. <strong>Zero certificate-related production outages</strong> post-automation. Cross-team recognition from peer platform leads at MuleSoft and Marketing Cloud.</div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Web platform</span><span class="tag">Site reliability</span><span class="tag">CI/CD</span><span class="tag">Heroku</span><span class="tag">CloudFront</span>
+    </div>
+  </article>
+
+  <!-- CASE 07 — Microsoft D365 -->
+  <article class="case" data-num="07">
+    <span class="domain">SaaS Reliability</span>
+    <h3>Reliability for ~4,500 customer environments on a global SaaS.</h3>
+    <div class="meta">2017 — 2021 · Senior DevOps Engineer · Microsoft</div>
+
+    <div class="row">
+      <div class="label">Context</div>
+      <div class="body">Led reliability and automation for a global business-applications SaaS on Azure. Tens of thousands of customer environments to onboard, deploy, and service.</div>
+    </div>
+    <div class="row">
+      <div class="label">Action</div>
+      <div class="body">Contributed to environment design, capacity planning, deployment, and servicing for ~4,500 customer environments. Sustained on-call ownership across the team's services.</div>
+    </div>
+
+    <div class="outcome-box">
+      <span class="label">Outcome</span>
+      <div class="metrics">Near <strong>100% availability</strong> on ~4,500 environments through proactive issue resolution and automated incident response.</div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">Azure</span><span class="tag">SaaS reliability</span><span class="tag">SRE</span><span class="tag">On-call ownership</span>
+    </div>
+  </article>
+
+  <!-- CASE 08 — Yahoo SRE -->
+  <article class="case" data-num="08">
+    <span class="domain">SaaS Reliability</span>
+    <h3>25% faster incident resolution on a high-visibility ads platform.</h3>
+    <div class="meta">2013 — 2015 · Service Reliability Engineer · Yahoo!</div>
+
+    <div class="row">
+      <div class="label">Context</div>
+      <div class="body">Managed back-end operations for high-visibility solutions in Yahoo Ads and Yahoo's Data Platform. Production outages and incident response were a daily reality.</div>
+    </div>
+    <div class="row">
+      <div class="label">Action</div>
+      <div class="body">Built automation tools for incident triage. Proactively triaged production outages to minimize downtime. Improved monitoring and alerting baselines.</div>
+    </div>
+
+    <div class="outcome-box">
+      <span class="label">Outcome</span>
+      <div class="metrics"><strong>25% reduction</strong> in incident resolution time through automation.</div>
+    </div>
+
+    <div class="tags">
+      <span class="tag">SRE</span><span class="tag">Incident management</span><span class="tag">Automation</span><span class="tag">Yahoo Ads</span>
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Want to chat? <a href="mailto:prashant.dasgupta3@gmail.com">prashant.dasgupta3@gmail.com</a> · <a href="https://www.linkedin.com/in/pkdasgupta/" target="_blank">LinkedIn</a> · <a href="https://github.com/pkdasgupta" target="_blank">GitHub</a></p>
+    <p style="margin-top:6px;font-size:11.5px">Back to <a href="index.html">portfolio overview</a>.</p>
+  </div>
+
+</div>
+</body>
+</html>

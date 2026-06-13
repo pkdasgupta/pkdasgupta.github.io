@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask About Prasanta — Q&amp;A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ece8df;
+    --paper: #ffffff;
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-mute: #8a8a8a;
+    --rule: #d9d3c8;
+    --accent: #b88450;
+    --accent-deep: #8a5a2b;
+    --accent-soft: #f7ede0;
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 820px;
+    margin: 30px auto;
+    background: var(--paper);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    padding: 48px 48px 60px;
+    min-height: 90vh;
+  }
+
+  /* === NAV === */
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 22px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .topnav .brand {
+    font-family: 'Bricolage Grotesque', Georgia, serif;
+    font-weight: 800;
+    font-size: 17px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .topnav nav { display: flex; gap: 22px; font-size: 13.5px; }
+  .topnav nav a { color: var(--ink-soft); text-decoration: none; font-weight: 500; }
+  .topnav nav a:hover { color: var(--accent-deep); }
+  .topnav nav a.active { color: var(--accent-deep); font-weight: 700; }
+
+  /* === HERO === */
+  .hero {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .hero .eyebrow {
+    display: inline-block;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Bricolage Grotesque', Georgia, serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+  .hero p {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0 auto;
+    max-width: 540px;
+    line-height: 1.55;
+  }
+
+  /* === SEARCH BAR === */
+  .search-box {
+    position: relative;
+    margin-bottom: 18px;
+  }
+  .search-input {
+    width: 100%;
+    background: var(--paper);
+    border: 2px solid var(--rule);
+    border-radius: 14px;
+    padding: 18px 56px 18px 22px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--ink);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow);
+  }
+  .search-input::placeholder { color: var(--ink-mute); }
+  .search-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(184,132,80,0.12), var(--shadow);
+  }
+  .search-icon {
+    position: absolute;
+    right: 20px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-deep);
+    pointer-events: none;
+  }
+
+  /* === SUGGESTED CHIPS === */
+  .suggested {
+    display: flex; flex-wrap: wrap; gap: 7px;
+    margin-bottom: 28px;
+  }
+  .suggested .lbl {
+    font-size: 11px; color: var(--ink-mute);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-right: 4px;
+    align-self: center;
+  }
+  .chip {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .chip:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-deep);
+  }
+
+  /* === ANSWERS === */
+  .answers {
+    display: flex; flex-direction: column; gap: 14px;
+    margin-top: 8px;
+  }
+  .answer {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 18px 22px;
+    box-shadow: var(--shadow);
+    animation: fadeUp 0.3s ease;
+  }
+  .answer.top {
+    border-left-width: 4px;
+    background: linear-gradient(135deg, var(--paper) 0%, rgba(247,237,224,0.4) 100%);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .answer .a-q {
+    font-family: 'Bricolage Grotesque', Georgia, serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--accent-deep);
+    margin: 0 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .answer .a-body {
+    font-size: 14.5px;
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .answer .a-body strong { font-weight: 700; }
+  .answer .a-tags {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--rule);
+  }
+  .answer .a-tag {
+    font-size: 10.5px;
+    color: var(--ink-mute);
+    background: rgba(184,132,80,0.06);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .answer .a-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--accent-deep);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .answer .a-link::after { content: ' →'; }
+
+  /* empty state */
+  .empty {
+    text-align: center;
+    padding: 32px 20px;
+    background: var(--paper);
+    border: 1px dashed var(--rule);
+    border-radius: 12px;
+    color: var(--ink-mute);
+    font-size: 14px;
+  }
+  .empty strong { color: var(--ink-soft); display: block; margin-bottom: 6px; font-size: 15px; }
+
+  /* === FOOTER === */
+  .footer {
+    margin-top: 40px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    color: var(--ink-mute);
+    font-size: 12.5px;
+  }
+  .footer a {
+    color: var(--accent-deep);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer .note {
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 14px;
+    font-size: 11.5px;
+    color: var(--accent-deep);
+  }
+
+  @media (max-width: 720px) {
+    .page { padding: 32px 22px; margin: 0; box-shadow: none; }
+    .hero h1 { font-size: 24px; }
+    .search-input { font-size: 15px; padding: 14px 50px 14px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP NAV -->
+  <div class="topnav">
+    <a class="brand" href="index.html">Prasanta Kumar Dasgupta</a>
+    <nav>
+      <a href="index.html">Portfolio</a>
+      <a href="work.html">Selected Work</a>
+      <a href="chat.html" class="active">Ask Anything</a>
+      <a href="https://www.linkedin.com/in/pkdasgupta/" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="eyebrow">Ask About Prasanta · Q&amp;A</span>
+    <h1>What would you like to know about Prasanta?</h1>
+    <p>A curated FAQ for recruiters and hiring managers. Type a question, or pick a starter below.</p>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-box">
+    <input
+      class="search-input"
+      type="text"
+      id="q"
+      placeholder="e.g. How does he grow people? · Is he open to relocation? · What AI tools has he built?"
+      autocomplete="off"
+      autofocus
+    />
+    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+    </svg>
+  </div>
+
+  <!-- SUGGESTED CHIPS -->
+  <div class="suggested" id="suggested">
+    <span class="lbl">Try:</span>
+  </div>
+
+  <!-- ANSWERS -->
+  <div class="answers" id="answers"></div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Want to chat with Prasanta directly? <a href="mailto:prashant.dasgupta3@gmail.com">prashant.dasgupta3@gmail.com</a> · <a href="https://www.linkedin.com/in/pkdasgupta/" target="_blank">LinkedIn</a></p>
+    <p class="note">This page runs entirely in your browser — no data collection, no tracking, no LLM calls. The answers are curated by Prasanta himself.</p>
+  </div>
+
+</div>
+
+<script>
+// =========================================================================
+// KNOWLEDGE BASE — curated facts about Prasanta
+// Each entry: { q (display question), a (answer HTML), keywords (match terms),
+// link (optional CTA), tags (optional) }
+// =========================================================================
+
+const KB = [
+  // ── Targeting & availability ─────────────────────────────────────────
+  {
+    q: "What roles is he open to?",
+    a: "<strong>Senior Engineering Manager</strong> roles primarily. Also open to Director of Engineering for a defined platform / AI-infrastructure / dev-productivity domain, or Staff EM (people + technical hybrid) at AI-native companies.",
+    keywords: ["role", "roles", "looking for", "open to", "what kind", "what type", "level", "seniority", "director", "staff", "next role"],
+    tags: ["targeting"]
+  },
+  {
+    q: "Is he open to relocation?",
+    a: "Yes — based in <strong>Hyderabad, India</strong> today, with a <strong>US Business Visa in hand</strong>. Open to remote-first, hybrid, or relocation for the right role (US, UK, EU, Singapore).",
+    keywords: ["relocate", "relocation", "move", "where", "based", "location", "visa", "us", "remote", "hybrid", "hyderabad", "india"],
+    tags: ["targeting", "logistics"]
+  },
+  {
+    q: "What is his notice period?",
+    a: "<strong>30 days</strong>.",
+    keywords: ["notice", "start", "when", "join", "available", "period"],
+    tags: ["logistics"]
+  },
+  {
+    q: "Is he active or passive in the market?",
+    a: "Currently leading high-impact charters at Salesforce. <strong>Open to conversations</strong> about Senior Engineering Manager roles where he can compound impact — actively portfolio-ready, not actively interviewing.",
+    keywords: ["active", "passive", "looking", "interviewing", "market", "available now"],
+    tags: ["targeting"]
+  },
+
+  // ── The differentiator ───────────────────────────────────────────────
+  {
+    q: "What makes him different from another EM with 15 years?",
+    a: "<strong>SRE-rooted EM who builds AI-first cultures and grows people through chaos.</strong> Three pillars: (1) twelve years of DevOps/reliability before EM — operational rigor + product execution; (2) he builds AI tooling, not just adopts it — Release Planner, Wavelength, Trust Hero, custom MCP servers, ~100% org-wide adoption; (3) zero attrition through three reorgs, top-tier manager-effectiveness rating, five promotions sponsored in one cycle.",
+    keywords: ["different", "unique", "differentiator", "spike", "stand out", "why him", "why hire", "edge"],
+    tags: ["differentiation"]
+  },
+  {
+    q: "What is his leadership philosophy?",
+    a: "<em>\"I coach my people so they're ready for a better job tomorrow — and treat them so they choose to stay today.\"</em> The proof: zero attrition through three reorgs and a top-tier manager-effectiveness rating in the latest internal survey.",
+    keywords: ["philosophy", "leadership", "approach", "principle", "manage", "values", "style"],
+    tags: ["philosophy"]
+  },
+
+  // ── People & talent ──────────────────────────────────────────────────
+  {
+    q: "How does he grow people?",
+    a: "Three things compound: <strong>(1) Coaching toward the next-grade scope before the cycle</strong> — he shapes work so people grow into the role they want; <strong>(2) Promotion-pipeline sponsorship end-to-end</strong> — strategic business cases, talent-readiness narratives, stakeholder feedback orchestration, bias-mitigated framing; <strong>(3) Comp + growth commitments through reorgs</strong> — every transitioning IC's career trajectory continues.",
+    keywords: ["grow people", "develop", "talent", "mentor", "coach", "career", "growth", "ic", "engineers", "report"],
+    tags: ["people"]
+  },
+  {
+    q: "Tell me about his zero-attrition record.",
+    a: "Across an 18-month window the team navigated <strong>three organizational transitions</strong>: an inbound team absorption, a major charter merger, and a charter exit. Industry baseline through that much change is 30–40% IC churn. Outcome: <strong>zero attrition</strong>. Career trajectory continued for every engineer. A former direct report proactively returned months later for promotion-packet guidance.",
+    keywords: ["attrition", "retention", "reorg", "transition", "churn", "stay", "leave", "lose people"],
+    tags: ["people"]
+  },
+  {
+    q: "How many engineers does he manage?",
+    a: "<strong>14 engineers</strong> today, spanning junior through lead engineer. Two parallel teams in the Salesforce platform org.",
+    keywords: ["how many", "team size", "manage", "engineers", "headcount", "ic", "team"],
+    tags: ["people"]
+  },
+  {
+    q: "Tell me about the recent promotion cycle promotion cycle.",
+    a: "He sponsored <strong>5 promotion nominations in a single cycle</strong> — 1 Principal Engineer, 3 Senior Engineers, 1 Member Engineer. End-to-end packets — strategic business cases, talent-readiness narratives, broad stakeholder support, bias-mitigated framing.",
+    keywords: ["promotion", "promote", "promo", "nominate", "nominations", "fy27", "cycle"],
+    tags: ["people"]
+  },
+
+  // ── AI-first work ────────────────────────────────────────────────────
+  {
+    q: "What AI tools has he built?",
+    a: "Four shipped:<br>• <strong>AI Release Planner</strong> — turns charter inputs (PRDs, spreadsheets) into structured work items. 5–10 hr/week saved per EM.<br>• <strong>Wavelength</strong> — hyper-personalization skill that auto-discovers user context across systems.<br>• <strong>AI Trust Hero</strong> framework — AI-assisted test-failure triage and gack analysis. Powered 99% AI-resolution at a release freeze.<br>• <strong>Custom MCP servers</strong> exposing planning workflows to Claude Code.<br><br>He also co-organized weekly skill-up sessions → <strong>~100% org-wide adoption</strong>.",
+    keywords: ["ai", "ml", "claude", "mcp", "tools", "tooling", "build", "ai-first", "automation", "release planner", "wavelength", "trust hero"],
+    tags: ["ai-first"]
+  },
+  {
+    q: "What's an example of his AI-first leadership at scale?",
+    a: "He drove <strong>~100% adoption</strong> of dev-productivity AI tools across the org — building the tools himself, running weekly skill-up sessions, publishing structured org-wide recaps, and seeding team-built skills. Result: <strong>99% AI-assisted resolution</strong> of test failures at a major release freeze across three teams. The team subsequently shipped 6+ Claude Code skills automating SDLC workflows.",
+    keywords: ["adoption", "scale", "org wide", "leadership", "ai culture", "productivity", "developer productivity"],
+    tags: ["ai-first"]
+  },
+
+  // ── Reliability & trust ──────────────────────────────────────────────
+  {
+    q: "Tell me about the 23% trust reduction.",
+    a: "During a peer EM's parental leave, he took on combined trust ownership for <strong>four merged teams</strong> while continuing to report directly to the senior engineering leader. Target: 20% reduction in trust debt against a 40% baseline. He drove multi-patch sign-offs across release boundaries, release-freeze readiness, planned-trust hygiene, and customer-escalation RCA closures, and stood up an AI-assisted resolution flow. Outcome: <strong>23% reduction vs 20% target</strong>. The team was named <strong>Team-of-the-Year Recognition</strong> — selected from 320+ nominated teams.",
+    keywords: ["trust", "reduction", "reliability", "vp", "parental", "patch", "release", "sre", "astro", "award", "freeze"],
+    tags: ["reliability"]
+  },
+  {
+    q: "What is his reliability/SRE background?",
+    a: "Twelve years of DevOps + SRE before EM. <strong>Yahoo!</strong> (2013–15): back-end ops on Yahoo Ads + Data Platform — 25% faster incident resolution. <strong>Samsung R&amp;D</strong> (2015–17): cloud infra + DevOps for live products. <strong>Microsoft</strong> (2017–21): reliability + automation for ~4,500 customer environments on Dynamics 365 SaaS. <strong>Salesforce</strong> (2021–): 99.9% uptime on flagship marketing properties; ~30% reduction in build/deploy times.",
+    keywords: ["sre", "reliability", "devops", "uptime", "yahoo", "samsung", "microsoft", "azure", "history", "background", "experience"],
+    tags: ["reliability"]
+  },
+
+  // ── Architecture ─────────────────────────────────────────────────────
+  {
+    q: "How does he sponsor cross-cloud architecture?",
+    a: "His current charter requires architectural alignment with adjacent platform teams (data ingestion, schema, packaging, content rendition) on a customer-visible release tracked toward Salesforce's major release event. He sponsors cross-cloud architectural reviews, allowlisting decisions, and design patterns; negotiates capacity backfills with VP and skip-level; builds month-by-month delivery plans against capacity vs commitment.",
+    keywords: ["architecture", "cross-cloud", "cross cloud", "platform", "sponsorship", "design", "drb", "alignment"],
+    tags: ["architecture"]
+  },
+
+  // ── Career history ───────────────────────────────────────────────────
+  {
+    q: "What is his career history?",
+    a: "<strong>Salesforce, Hyderabad</strong> — Software Engineering Manager (Jul 2024 — present), Senior Engineer, Web Platform team (Jun 2021 — Jun 2024).<br><strong>Microsoft, Hyderabad</strong> — Senior DevOps Engineer, D365 on Azure (May 2017 — Jun 2021).<br><strong>Samsung R&amp;D India, Bengaluru</strong> — Tech Lead, DevOps (Jun 2015 — May 2017).<br><strong>Yahoo!, Bangalore</strong> — Service Reliability Engineer (Dec 2013 — Jun 2015).<br><strong>TCS</strong> — Assistant Systems Engineer at Deutsche Bank (Oct 2012 — Dec 2013).<br><br>15+ years total.",
+    keywords: ["history", "career", "experience", "where worked", "companies", "background", "previous", "past", "resume", "cv"],
+    tags: ["history"]
+  },
+  {
+    q: "Where does he work today?",
+    a: "<strong>Salesforce, Hyderabad</strong> — Software Engineering Manager in the Salesforce platform org. Joined July 2024. Previously Senior Engineer on Web Platform team (2021–24).",
+    keywords: ["where", "current", "today", "now", "company", "salesforce", "rae", "team"],
+    tags: ["history"]
+  },
+  {
+    q: "What is his current team?",
+    a: "Two teams in the <strong>Salesforce platform org</strong> org — one focused on the cross-surface experience layer powering agentic surfaces, the other on content metadata. 14 engineers across both. (reporting line) (VP-line through the the platform org org). Previously: Web Platform team — the headless rendering layer behind Salesforce's flagship marketing properties.",
+    keywords: ["current team", "team", "rae", "rich agentic", "report", "manager", "boss", "org"],
+    tags: ["history"]
+  },
+
+  // ── Recognition ──────────────────────────────────────────────────────
+  {
+    q: "What recognition has his team received?",
+    a: "<strong>Team-of-the-Year Recognition</strong> — selected from 320+ nominated teams across Salesforce Technology — 37 winning teams total, recognized for impact across Customers, Innovation, Business, High Performance, People, and AI.",
+    keywords: ["recognition", "award", "astro", "winner", "honored", "award won", "achievement"],
+    tags: ["recognition"]
+  },
+  {
+    q: "What do peers say about him?",
+    a: "Two genuine quotes:<br>• <em>\"I see you as a great example and model for the rest of the Engineering Managers at our org. You will be missed.\"</em> — peer Engineering Manager, cross-team Salesforce business unit.<br>• <em>\"Thank you for chasing this down for us — your follow-through is genuinely something else.\"</em> — Senior Engineering Leader.<br><br>Plus: <strong>top-tier manager-effectiveness rating</strong> in latest internal survey — every team member said yes.",
+    keywords: ["peer", "feedback", "quote", "testimonial", "say about", "reputation", "what do people", "manager rating"],
+    tags: ["recognition"]
+  },
+
+  // ── Skills ───────────────────────────────────────────────────────────
+  {
+    q: "What is his tech stack?",
+    a: "<strong>Web Platform / SaaS:</strong> Salesforce Platform, Agentforce, CMS, Data Cloud, LWC, Connect APIs, Heroku, Page Builder.<br><strong>Cloud:</strong> AWS, Azure, CloudFront.<br><strong>DevOps:</strong> CI/CD, Jenkins, CHEF, Kafka, Redis, ELK, GitHub Actions, Python, Ruby.<br><strong>AI/ML:</strong> Claude Code, custom MCP servers, AI agents, prompt engineering.<br><strong>Reliability:</strong> SRE, observability, SLOs, incident response, capacity planning.",
+    keywords: ["stack", "tech", "tools", "skills", "languages", "framework", "technology", "expertise"],
+    tags: ["skills"]
+  },
+
+  // ── Logistics ────────────────────────────────────────────────────────
+  {
+    q: "How can I reach him?",
+    a: "<strong>Email:</strong> prashant.dasgupta3@gmail.com<br><strong>LinkedIn:</strong> linkedin.com/in/pkdasgupta<br><strong>Phone:</strong> +91 9916600073<br><strong>GitHub:</strong> github.com/pkdasgupta",
+    keywords: ["reach", "contact", "email", "phone", "linkedin", "github", "connect", "talk", "chat", "message"],
+    link: { text: "Email Prasanta", href: "mailto:prashant.dasgupta3@gmail.com" },
+    tags: ["contact"]
+  },
+  {
+    q: "What languages does he speak?",
+    a: "<strong>English</strong> (professional/native), <strong>Bangla</strong> (native), <strong>Hindi</strong> (fluent).",
+    keywords: ["languages", "english", "hindi", "bangla", "speak"],
+    tags: ["logistics"]
+  },
+  {
+    q: "Does he have any patents or open-source contributions?",
+    a: "Public GitHub at <strong>github.com/pkdasgupta</strong> (8 public repos, 10 gists). Internal-only patents/contributions are not surfaced here.",
+    keywords: ["patent", "open source", "oss", "github", "contribute", "publications"],
+    tags: ["public"]
+  },
+
+  // ── Education ────────────────────────────────────────────────────────
+  {
+    q: "Where did he study?",
+    a: "<strong>Bachelor of Technology</strong>, Computer Science &amp; Engineering — West Bengal University of Technology, Asansol (2008–2012).<br><strong>Senior Secondary</strong>, Pure Science (CBSE) — Chinmaya Vidyalaya, Bokaro (2004–2008).",
+    keywords: ["education", "study", "studied", "school", "university", "college", "degree", "graduate", "asansol", "bokaro"],
+    tags: ["history"]
+  },
+
+  // ── Beyond work ──────────────────────────────────────────────────────
+  {
+    q: "What does he do outside of work?",
+    a: "Personal finance (investing, FIRE-curious), volunteering, and travelling.",
+    keywords: ["hobby", "hobbies", "outside", "free time", "weekend", "personal", "interests", "fun"],
+    tags: ["beyond"]
+  },
+
+  // ── Why this portfolio exists ────────────────────────────────────────
+  {
+    q: "Why did he build this portfolio?",
+    a: "Two reasons. (1) He is portfolio-ready for the right Senior EM conversation, even if not actively interviewing. (2) Building it himself was the most natural way to demonstrate the AI-first engineering he talks about — this Q&amp;A page, the deploy script, and the underlying HTML are all things he shipped end-to-end as a single-evening project.",
+    keywords: ["why", "portfolio", "site", "build", "reason", "this site"],
+    tags: ["meta"]
+  }
+];
+
+// =========================================================================
+// MATCHING ENGINE — keyword-weighted scoring with token overlap
+// =========================================================================
+
+const STOP = new Set(['the','a','an','is','are','was','were','be','been','being','have','has','had','do','does','did','will','would','could','should','can','may','might','to','of','in','on','at','for','with','by','about','as','from','what','when','where','who','how','why','your','you','i','my','me','his','he','him','they','them','their','prasanta','prasanthas','prasantas']);
+
+function tokenize(s) {
+  return s.toLowerCase()
+    .replace(/[^a-z0-9\s'-]/g, ' ')
+    .split(/\s+/)
+    .filter(w => w.length > 1 && !STOP.has(w));
+}
+
+function score(query, entry) {
+  const qTokens = tokenize(query);
+  if (qTokens.length === 0) return 0;
+  const haystack = (entry.q + ' ' + entry.keywords.join(' ') + ' ' + entry.a.replace(/<[^>]+>/g, '')).toLowerCase();
+  let s = 0;
+  for (const t of qTokens) {
+    // exact keyword match (highest weight)
+    if (entry.keywords.some(k => k.toLowerCase().includes(t))) s += 5;
+    // question-text match
+    if (entry.q.toLowerCase().includes(t)) s += 3;
+    // body match
+    if (haystack.includes(t)) s += 1;
+  }
+  // boost for multi-token query that hits multiple keywords
+  if (qTokens.length >= 2) {
+    const hitCount = qTokens.filter(t => entry.keywords.some(k => k.toLowerCase().includes(t))).length;
+    if (hitCount >= 2) s += hitCount * 2;
+  }
+  return s;
+}
+
+function search(query) {
+  if (!query.trim()) return [];
+  const scored = KB.map(e => ({ e, s: score(query, e) })).filter(x => x.s > 0);
+  scored.sort((a, b) => b.s - a.s);
+  return scored.slice(0, 4).map(x => x.e);
+}
+
+// =========================================================================
+// RENDER
+// =========================================================================
+
+const $q = document.getElementById('q');
+const $answers = document.getElementById('answers');
+const $suggested = document.getElementById('suggested');
+
+const STARTERS = [
+  "What roles is he open to?",
+  "How does he grow people?",
+  "What AI tools has he built?",
+  "Is he open to relocation?",
+  "What makes him different?",
+  "Reliability background?",
+  "past year Team-of-the-Year Recognition?",
+  "Notice period?"
+];
+
+function renderSuggested() {
+  STARTERS.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.textContent = s;
+    btn.onclick = () => { $q.value = s; runSearch(); $q.focus(); };
+    $suggested.appendChild(btn);
+  });
+}
+
+function escape(s) {
+  return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+}
+
+function renderAnswers(results, query) {
+  $answers.innerHTML = '';
+  if (!query.trim()) {
+    return;
+  }
+  if (results.length === 0) {
+    $answers.innerHTML = `
+      <div class="empty">
+        <strong>Nothing matched that question.</strong>
+        Try a starter chip above, or ask Prasanta directly:
+        <a href="mailto:prashant.dasgupta3@gmail.com" style="color:var(--accent-deep);font-weight:600">prashant.dasgupta3@gmail.com</a>
+      </div>`;
+    return;
+  }
+  results.forEach((entry, i) => {
+    const el = document.createElement('div');
+    el.className = 'answer' + (i === 0 ? ' top' : '');
+    let html = `<div class="a-q">${escape(entry.q)}</div><div class="a-body">${entry.a}</div>`;
+    if (entry.link) {
+      html += `<a class="a-link" href="${entry.link.href}">${entry.link.text}</a>`;
+    }
+    if (entry.tags && entry.tags.length) {
+      html += `<div class="a-tags">${entry.tags.map(t => `<span class="a-tag">${t}</span>`).join('')}</div>`;
+    }
+    el.innerHTML = html;
+    $answers.appendChild(el);
+  });
+}
+
+let debounceTimer;
+function runSearch() {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    const q = $q.value;
+    renderAnswers(search(q), q);
+  }, 120);
+}
+
+$q.addEventListener('input', runSearch);
+$q.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); runSearch(); } });
+
+renderSuggested();
+</script>
+</body>
+</html>
